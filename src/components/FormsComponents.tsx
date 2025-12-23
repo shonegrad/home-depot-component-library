@@ -196,7 +196,7 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                     <Input
                       placeholder="Search tools, materials..."
-                      className="pl-10 pr-24 py-3"
+                      className="pl-10 pr-24 h-10 py-2 text-sm"
                     />
                     <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
                       <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
@@ -211,7 +211,7 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                       </motion.div>
                     </div>
                   </div>
-                  <div className="flex gap-2 mt-3">
+                  <div className="flex flex-wrap gap-2 mt-3">
                     <Badge variant="secondary" className="text-xs">Tools</Badge>
                     <Badge variant="secondary" className="text-xs">Paint</Badge>
                     <Badge variant="secondary" className="text-xs">Hardware</Badge>
@@ -224,7 +224,7 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
               <Label className="mb-2">Search with Filters</Label>
               <Card className="max-w-3xl">
                 <CardContent className="p-4">
-                  <div className="flex gap-3">
+                  <div className="flex flex-col md:flex-row gap-3">
                     <div className="relative flex-1">
                       <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                       <Input
@@ -249,7 +249,7 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                   </div>
 
                   {/* Quick Filters */}
-                  <div className="flex items-center gap-2 mt-4">
+                  <div className="flex flex-wrap items-center gap-2 mt-4">
                     <span className="text-sm font-medium">Quick filters:</span>
                     {filterOptions.slice(0, 4).map((filter) => (
                       <Button

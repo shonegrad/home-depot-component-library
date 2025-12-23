@@ -60,7 +60,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
           <h3 className="text-lg font-semibold mb-4">Global Header - Desktop</h3>
           <div className="border border-border rounded-lg p-4 bg-card shadow-sm">
             <header className="flex items-center justify-between py-3 px-6">
-              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-4 md:gap-6">
                 <motion.div
                   className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center cursor-pointer"
                   whileHover={{ scale: 1.05 }}
@@ -68,7 +68,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
                 >
                   <Home className="w-6 h-6 text-primary-foreground" />
                 </motion.div>
-                <nav className="hidden md:flex items-center gap-6">
+                <nav className="hidden lg:flex items-center gap-6">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant="ghost" className="font-medium hover:text-primary">
@@ -91,7 +91,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
                 </nav>
               </div>
 
-              <div className="flex-1 max-w-2xl mx-8">
+              <div className="flex-1 max-w-2xl mx-4 md:mx-8 hidden md:block">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                   <Input
