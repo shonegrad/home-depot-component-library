@@ -269,6 +269,16 @@ export function StorybookLayout({
             </div>
 
             <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 mr-2"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              title="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </Button>
+
+            <Button
               variant="outline"
               size="sm"
               className={`gap-2 ${showCode ? 'bg-secondary' : ''}`}
