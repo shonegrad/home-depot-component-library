@@ -6,21 +6,21 @@ import { useTheme } from './theme-provider';
 import {
   Home,
   Menu,
-  FormInput,
-  Package,
+  TextFields,
+  Inventory2,
   ShoppingCart,
-  FileText,
+  Article,
   Layers,
-  ChevronDown,
+  ExpandMore,
   ChevronRight,
-  Sun,
-  Moon,
+  LightMode,
+  DarkMode,
   Laptop,
-  Smartphone,
+  PhoneAndroid,
   Tablet,
   Code
-} from 'lucide-react';
-import { cn } from '../lib/utils'; // Assuming utils exists, if not I'll fix
+} from '@mui/icons-material';
+import { cn } from '../lib/utils';
 
 const sections = [
   {
@@ -38,7 +38,7 @@ const sections = [
   {
     id: 'forms',
     title: 'Forms',
-    icon: FormInput,
+    icon: TextFields,
     components: [
       'Text Input',
       'Search Bar',
@@ -52,7 +52,7 @@ const sections = [
   {
     id: 'product',
     title: 'Product',
-    icon: Package,
+    icon: Inventory2,
     components: [
       'Product Tile',
       'Product Carousel',
@@ -78,7 +78,7 @@ const sections = [
   {
     id: 'articles',
     title: 'Articles / Content',
-    icon: FileText,
+    icon: Article,
     components: [
       'Article List',
       'Article Detail',
@@ -186,7 +186,7 @@ export function StorybookLayout({
                       <span>{section.title}</span>
                     </div>
                     {isExpanded ? (
-                      <ChevronDown className="w-3.5 h-3.5 opacity-50" />
+                      <ExpandMore className="w-3.5 h-3.5 opacity-50" />
                     ) : (
                       <ChevronRight className="w-3.5 h-3.5 opacity-50" />
                     )}
@@ -223,7 +223,7 @@ export function StorybookLayout({
                 className="h-8 w-8"
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               >
-                {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                {theme === 'dark' ? <LightMode className="w-4 h-4" /> : <DarkMode className="w-4 h-4" />}
               </Button>
             </div>
           </div>
@@ -266,7 +266,7 @@ export function StorybookLayout({
                 className={`h-7 px-2 ${device === 'mobile' ? 'bg-background shadow-sm' : 'text-muted-foreground hover:bg-transparent'}`}
                 onClick={() => setDevice('mobile')}
               >
-                <Smartphone className="w-4 h-4 mr-1.5" />
+                <PhoneAndroid className="w-4 h-4 mr-1.5" />
                 <span className="text-xs">Mobile</span>
               </Button>
             </div>
@@ -278,7 +278,7 @@ export function StorybookLayout({
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               title="Toggle theme"
             >
-              {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              {theme === 'dark' ? <LightMode className="w-4 h-4" /> : <DarkMode className="w-4 h-4" />}
             </Button>
 
             <Button
