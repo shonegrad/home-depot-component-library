@@ -1,11 +1,32 @@
+# Home Depot Component Library
 
-  # Home Depot Component Library
+A comprehensive React component library styled with Tailwind CSS/Vanilla CSS patterns, implementing a modern design system.
 
-  This is a code bundle for Home Depot Component Library. The original project is available at https://www.figma.com/design/nSH6gpdugJMUmczL64E5VA/Home-Depot-Component-Library.
+## Live Demo
 
-  ## Running the code
+[https://shonegrad.github.io/home-depot-component-library/](https://shonegrad.github.io/home-depot-component-library/)
 
-  Run `npm i` to install the dependencies.
+## Local Development
 
-  Run `npm run dev` to start the development server.
-  
+1. Install dependencies:
+
+   ```bash
+   npm ci
+   ```
+
+2. Start dev server:
+
+   ```bash
+   npm run dev
+   ```
+
+## Build & Preview
+
+To build for production and preview locally:
+
+```bash
+npm run build
+npm run preview
+```
+
+> **Note**: This is a prototype/portfolio artifact demonstrating component library architecture and implementation skills.
