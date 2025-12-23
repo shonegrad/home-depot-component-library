@@ -1,75 +1,54 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/card';
-import { Button } from '../ui/button';
 import { toast } from 'sonner';
-import { Copy } from 'lucide-react';
+import { Copy, Hash } from 'lucide-react';
 
 const colorGroups = [
     {
-        name: 'Base Colors',
-        description: 'Core background and foreground colors.',
+        name: 'Brand Essentials',
+        description: 'The core colors that define our brand identity.',
         colors: [
-            { name: 'Background', variable: '--background', hex: 'bg-background' },
-            { name: 'Foreground', variable: '--foreground', hex: 'bg-foreground' },
-            { name: 'Card', variable: '--card', hex: 'bg-card' },
-            { name: 'Card Foreground', variable: '--card-foreground', hex: 'bg-card-foreground' },
-            { name: 'Popover', variable: '--popover', hex: 'bg-popover' },
-            { name: 'Popover Foreground', variable: '--popover-foreground', hex: 'bg-popover-foreground' },
-        ]
-    },
-    {
-        name: 'Brand Colors',
-        description: 'Primary, secondary, and accent colors.',
-        colors: [
-            { name: 'Primary', variable: '--primary', hex: 'bg-primary' },
+            { name: 'Primary Orange', variable: '--primary', hex: 'bg-primary' },
             { name: 'Primary Foreground', variable: '--primary-foreground', hex: 'bg-primary-foreground' },
             { name: 'Secondary', variable: '--secondary', hex: 'bg-secondary' },
-            { name: 'Secondary Foreground', variable: '--secondary-foreground', hex: 'bg-secondary-foreground' },
-            { name: 'Accent', variable: '--accent', hex: 'bg-accent' },
-            { name: 'Accent Foreground', variable: '--accent-foreground', hex: 'bg-accent-foreground' },
         ]
     },
     {
-        name: 'Feedback',
-        description: 'Colors for success, error, warning, and info states.',
+        name: 'Surfaces',
+        description: 'Backgrounds for pages, cards, and modal layers.',
         colors: [
-            { name: 'Destructive', variable: '--destructive', hex: 'bg-destructive' },
-            { name: 'Destructive Foreground', variable: '--destructive-foreground', hex: 'bg-destructive-foreground' },
-            { name: 'Muted', variable: '--muted', hex: 'bg-muted' },
-            { name: 'Muted Foreground', variable: '--muted-foreground', hex: 'bg-muted-foreground' },
+            { name: 'Canvas', variable: '--background', hex: 'bg-background' },
+            { name: 'Card Surface', variable: '--card', hex: 'bg-card' },
+            { name: 'Popover Surface', variable: '--popover', hex: 'bg-popover' },
+            { name: 'Muted Surface', variable: '--muted', hex: 'bg-muted' },
+        ]
+    },
+    {
+        name: 'Text & Icons',
+        description: 'Colors for typography and iconography.',
+        colors: [
+            { name: 'Main Text', variable: '--foreground', hex: 'bg-foreground' },
+            { name: 'Muted Text', variable: '--muted-foreground', hex: 'bg-muted-foreground' },
+            { name: 'Accent Text', variable: '--accent-foreground', hex: 'bg-accent-foreground' },
         ]
     },
     {
         name: 'UI Elements',
-        description: 'Borders, inputs, and rings.',
+        description: 'Structural colors for borders, inputs, and feedback.',
         colors: [
             { name: 'Border', variable: '--border', hex: 'bg-border' },
-            { name: 'Input', variable: '--input', hex: 'bg-input' },
-            { name: 'Ring', variable: '--ring', hex: 'bg-ring' },
+            { name: 'Input Border', variable: '--input', hex: 'bg-input' },
+            { name: 'Destructive', variable: '--destructive', hex: 'bg-destructive' },
         ]
     },
     {
-        name: 'Sidebar',
-        description: 'Navigation and sidebar specific colors.',
+        name: 'Data Visualization',
+        description: 'Distinct colors for charts and graphs.',
         colors: [
-            { name: 'Sidebar', variable: '--sidebar', hex: 'bg-sidebar' },
-            { name: 'Sidebar Foreground', variable: '--sidebar-foreground', hex: 'bg-sidebar-foreground' },
-            { name: 'Sidebar Primary', variable: '--sidebar-primary', hex: 'bg-sidebar-primary' },
-            { name: 'Sidebar Primary FG', variable: '--sidebar-primary-foreground', hex: 'bg-sidebar-primary-foreground' },
-            { name: 'Sidebar Accent', variable: '--sidebar-accent', hex: 'bg-sidebar-accent' },
-            { name: 'Sidebar Accent FG', variable: '--sidebar-accent-foreground', hex: 'bg-sidebar-accent-foreground' },
-            { name: 'Sidebar Border', variable: '--sidebar-border', hex: 'bg-sidebar-border' },
-        ]
-    },
-    {
-        name: 'Chart Colors',
-        description: 'Data visualization palette.',
-        colors: [
-            { name: 'Chart 1', variable: '--chart-1', hex: 'bg-chart-1' },
-            { name: 'Chart 2', variable: '--chart-2', hex: 'bg-chart-2' },
-            { name: 'Chart 3', variable: '--chart-3', hex: 'bg-chart-3' },
-            { name: 'Chart 4', variable: '--chart-4', hex: 'bg-chart-4' },
-            { name: 'Chart 5', variable: '--chart-5', hex: 'bg-chart-5' },
+            { name: 'Series 1', variable: '--chart-1', hex: 'bg-chart-1' },
+            { name: 'Series 2', variable: '--chart-2', hex: 'bg-chart-2' },
+            { name: 'Series 3', variable: '--chart-3', hex: 'bg-chart-3' },
+            { name: 'Series 4', variable: '--chart-4', hex: 'bg-chart-4' },
+            { name: 'Series 5', variable: '--chart-5', hex: 'bg-chart-5' },
         ]
     }
 ];
@@ -84,51 +63,39 @@ export function Colors() {
     };
 
     return (
-        <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tight">Colors</h2>
-                <p className="text-muted-foreground text-lg">
-                    Our color palette is designed to be accessible and harmonious, supporting both light and dark modes.
+        <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-6xl mx-auto w-full">
+            <div className="space-y-4 text-center mb-16">
+                <h2 className="text-4xl font-bold tracking-tight">Color System</h2>
+                <p className="text-muted-foreground text-xl max-w-2xl mx-auto">
+                    A semantic color palette designed for accessibility and harmony.
                 </p>
             </div>
 
-            <div className="grid gap-8">
+            <div className="grid gap-16">
                 {colorGroups.map((group) => (
-                    <div key={group.name} className="space-y-4">
-                        <div className="space-y-1">
-                            <h3 className="text-xl font-semibold">{group.name}</h3>
-                            <p className="text-sm text-muted-foreground">{group.description}</p>
+                    <div key={group.name} className="space-y-6">
+                        <div className="flex items-center gap-4">
+                            <h3 className="text-2xl font-bold">{group.name}</h3>
+                            <div className="h-px bg-border flex-1" />
+                            <span className="text-sm text-muted-foreground">{group.description}</span>
                         </div>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
                             {group.colors.map((color) => (
-                                <div key={color.name} className="group relative">
-                                    <div className="space-y-3">
-                                        <div
-                                            className={`h-24 w-full rounded-lg border shadow-sm transition-all hover:scale-105 cursor-pointer flex items-center justify-center ${color.hex}`}
-                                            onClick={() => copyToClipboard(`var(${color.variable})`)}
-                                        >
-                                            <Copy className="w-5 h-5 text-current opacity-0 group-hover:opacity-100 transition-opacity mix-blend-difference" />
-                                        </div>
-                                        <div className="space-y-1">
-                                            <p className="font-medium text-sm leading-none">{color.name}</p>
-                                            <div className="flex flex-col gap-0.5">
-                                                <code
-                                                    className="text-[10px] text-muted-foreground font-mono bg-muted/50 px-1 py-0.5 rounded w-fit cursor-pointer hover:bg-muted hover:text-foreground transition-colors"
-                                                    onClick={() => copyToClipboard(color.variable)}
-                                                >
-                                                    {color.variable}
-                                                </code>
-                                                {/* 
-                          Note: Tailwind classes are used for display, 
-                          but typically in a design system you'd use the variable.
-                         */}
-                                                <code
-                                                    className="text-[10px] text-muted-foreground font-mono bg-muted/50 px-1 py-0.5 rounded w-fit cursor-pointer hover:bg-muted hover:text-foreground transition-colors"
-                                                    onClick={() => copyToClipboard(color.hex)}
-                                                >
-                                                    {color.hex}
-                                                </code>
-                                            </div>
+                                <div
+                                    key={color.name}
+                                    className="group relative flex flex-col gap-3 cursor-pointer"
+                                    onClick={() => copyToClipboard(`var(${color.variable})`)}
+                                >
+                                    <div className={`aspect-square w-full rounded-2xl shadow-sm border ring-2 ring-transparent group-hover:ring-primary/20 transition-all duration-300 ${color.hex} flex items-center justify-center`}>
+                                        <Copy className="w-8 h-8 text-white mix-blend-difference opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:scale-110 duration-200" />
+                                    </div>
+
+                                    <div className="space-y-0.5">
+                                        <p className="font-medium text-sm text-foreground group-hover:text-primary transition-colors">{color.name}</p>
+                                        <div className="flex items-center gap-1.5 text-xs text-muted-foreground opacity-60 group-hover:opacity-100 transition-opacity">
+                                            <Hash className="w-3 h-3" />
+                                            <span className="font-mono">{color.variable.replace('--', '')}</span>
                                         </div>
                                     </div>
                                 </div>
