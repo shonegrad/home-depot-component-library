@@ -97,16 +97,16 @@ export function Iconography() {
                             <span className="text-sm text-muted-foreground hidden sm:block">{set.description}</span>
                         </div>
 
-                        <div className="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-6">
+                        <div className="grid grid-cols-[repeat(auto-fill,minmax(90px,1fr))] gap-4">
                             {set.icons.map((item) => (
                                 <div
                                     key={item.name}
                                     className="group relative flex flex-col gap-2"
                                     onClick={() => copyImport(item.import)}
                                 >
-                                    <div className="aspect-square w-full rounded-2xl bg-card border shadow-sm flex items-center justify-center transition-all duration-300 group-hover:border-primary group-hover:shadow-md cursor-pointer relative overflow-hidden">
+                                    <div className="aspect-square w-full rounded-xl bg-card border shadow-sm flex items-center justify-center transition-all duration-300 group-hover:border-primary group-hover:shadow-md cursor-pointer relative overflow-hidden">
                                         <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                        <item.icon className="w-16 h-16 text-foreground group-hover:text-primary transition-colors group-hover:scale-110 duration-300" />
+                                        <item.icon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-foreground group-hover:text-primary transition-colors group-hover:scale-110 duration-300" />
 
                                         <div className="absolute inset-x-0 bottom-0 p-2 opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 duration-300">
                                             <div className="bg-primary/90 text-primary-foreground text-[10px] text-center py-1 rounded-full font-medium backdrop-blur-sm">
