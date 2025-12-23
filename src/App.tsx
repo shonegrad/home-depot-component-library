@@ -6,6 +6,7 @@ import { ProductComponents } from './components/ProductComponents';
 import { CheckoutComponents } from './components/CheckoutComponents';
 import { ArticlesComponents } from './components/ArticlesComponents';
 import { UtilitiesComponents } from './components/UtilitiesComponents';
+import { FoundationsComponents } from './components/FoundationsComponents';
 import { ProductListingPage } from './components/context/ProductListingPage';
 import { CheckoutPage } from './components/context/CheckoutPage';
 import { Toaster } from './components/ui/sonner';
@@ -28,6 +29,8 @@ export default function App() {
         return <ArticlesComponents activeComponent={activeComponent} />;
       case 'utilities':
         return <UtilitiesComponents activeComponent={activeComponent} />;
+      case 'foundations':
+        return <FoundationsComponents activeComponent={activeComponent} />;
       case 'context':
         if (activeComponent === 'Product Listing Page') return <ProductListingPage />;
         if (activeComponent === 'Checkout Page') return <CheckoutPage />;
@@ -41,6 +44,7 @@ export default function App() {
     setActiveSection(section);
     // Set default component for each section
     const defaultComponents: Record<string, string> = {
+      foundations: 'Colors',
       navigation: 'Global Header',
       forms: 'Text Input',
       product: 'Product Tile',

@@ -18,12 +18,25 @@ import {
   Laptop,
   PhoneAndroid,
   Tablet,
-  Code
+  Code,
+  Palette
 } from '@mui/icons-material';
 import { cn } from '../lib/utils';
 import { DevicePortalProvider } from '../lib/device-portal-context';
 
 const sections = [
+  {
+    id: 'foundations',
+    title: 'Design Tokens',
+    icon: Palette,
+    components: [
+      'Colors',
+      'Typography',
+      'Iconography',
+      'Spacing',
+      'Shadows & Radius'
+    ]
+  },
   {
     id: 'navigation',
     title: 'Navigation',
@@ -301,26 +314,14 @@ export function StorybookLayout({
         </div>
 
         {/* Content Canvas */}
-        <div className="flex-1 overflow-hidden p-8 flex flex-col items-center">
+        <div className="flex-1 overflow-hidden p-8 flex flex-col items-center bg-muted/20 bg-paper-texture">
           <div
             className="transition-all duration-500 ease-in-out shrink-0 flex flex-col bg-background border border-border rounded-xl shadow-sm overflow-hidden flex-1 min-h-0"
             style={{
               ...getDeviceStyle(),
             }}
           >
-            {/* Mock Browser/Device Header for context */}
-            <div className="h-8 bg-muted border-b border-border flex items-center px-4 gap-2 shrink-0">
-              <div className="flex gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-400/20 border border-red-500/30"></div>
-                <div className="w-2.5 h-2.5 rounded-full bg-amber-400/20 border border-amber-500/30"></div>
-                <div className="w-2.5 h-2.5 rounded-full bg-green-400/20 border border-green-500/30"></div>
-              </div>
-              <div className="flex-1 text-center overflow-hidden px-2">
-                <div className="inline-block px-3 py-0.5 bg-background rounded text-[10px] text-muted-foreground font-medium border border-border shadow-sm whitespace-nowrap overflow-hidden text-ellipsis max-w-full">
-                  http://homedepot.ca/{activeSection}/{activeComponent.toLowerCase().replace(/\s+/g, '-')}
-                </div>
-              </div>
-            </div>
+
 
             <div className="flex-1 relative min-h-0" ref={containerRef}>
               <DevicePortalProvider value={{ container }}>
@@ -345,11 +346,11 @@ export default function Example() {
                     </div>
                   </ScrollArea>
                 ) : (
-                  <ScrollArea className="h-full">
+                  <div className="h-full overflow-y-auto custom-scrollbar">
                     <div className="p-8">
                       {children}
                     </div>
-                  </ScrollArea>
+                  </div>
                 )}
               </DevicePortalProvider>
             </div>
