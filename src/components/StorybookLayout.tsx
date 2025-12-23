@@ -136,11 +136,11 @@ export function StorybookLayout({
     );
   };
 
-  const getDeviceWidth = () => {
+  const getDeviceStyle = () => {
     switch (device) {
-      case 'mobile': return 'w-[375px] mx-auto';
-      case 'tablet': return 'w-[768px] mx-auto';
-      default: return 'w-full';
+      case 'mobile': return { width: '375px' };
+      case 'tablet': return { width: '768px' };
+      default: return { width: '100%' };
     }
   };
 
@@ -296,7 +296,10 @@ export function StorybookLayout({
         {/* Content Canvas */}
         <ScrollArea className="flex-1">
           <div className="p-8 flex justify-center min-h-[calc(100vh-3.5rem)]">
-            <div className={`transition-all duration-300 ease-in-out ${getDeviceWidth()}`}>
+            <div
+              className="transition-all duration-500 ease-in-out shrink-0"
+              style={getDeviceStyle()}
+            >
               <div className="bg-background border border-border rounded-xl shadow-sm overflow-hidden min-h-[500px]">
                 {/* Mock Browser/Device Header for context */}
                 <div className="h-8 bg-muted border-b border-border flex items-center px-4 gap-2">
