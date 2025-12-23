@@ -12,12 +12,12 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { motion } from 'motion/react';
 import { toast } from 'sonner@2.0.3';
-import { 
-  Search, 
-  Plus, 
-  Minus, 
-  MapPin, 
-  CreditCard, 
+import {
+  Search,
+  Plus,
+  Minus,
+  MapPin,
+  CreditCard,
   Scan,
   Mic,
   Eye,
@@ -112,13 +112,13 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
             <div className="space-y-2">
               <Label>Password Input</Label>
               <div className="relative">
-                <Input 
+                <Input
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter password"
                   className="pr-10"
                 />
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   size="icon"
                   className="absolute right-2 top-1/2 transform -translate-y-1/2 w-6 h-6"
                   onClick={() => setShowPassword(!showPassword)}
@@ -151,7 +151,7 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
               <Label className="mb-2">Smart Search with Autocomplete</Label>
               <div className="relative max-w-2xl">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                <Input 
+                <Input
                   placeholder="What can we help you find today?"
                   className="pl-10 pr-4 py-3 text-base focus:ring-2 focus:ring-primary/20 transition-all"
                   value={searchQuery}
@@ -163,10 +163,10 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                   onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
                 />
                 {showSuggestions && (
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="absolute top-full left-0 right-0 bg-white border border-border rounded-md mt-1 shadow-lg z-50"
+                    className="absolute top-full left-0 right-0 bg-card border border-border rounded-md mt-1 shadow-lg z-50"
                   >
                     <div className="py-2">
                       <div className="px-3 py-1 text-xs font-medium text-muted-foreground">Popular searches</div>
@@ -194,7 +194,7 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                 <CardContent className="p-4">
                   <div className="relative">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                    <Input 
+                    <Input
                       placeholder="Search tools, materials..."
                       className="pl-10 pr-24 py-3"
                     />
@@ -227,7 +227,7 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                   <div className="flex gap-3">
                     <div className="relative flex-1">
                       <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                      <Input 
+                      <Input
                         placeholder="Search products..."
                         className="pl-10 pr-4 py-3"
                       />
@@ -247,7 +247,7 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                       <Search className="w-4 h-4" />
                     </Button>
                   </div>
-                  
+
                   {/* Quick Filters */}
                   <div className="flex items-center gap-2 mt-4">
                     <span className="text-sm font-medium">Quick filters:</span>
@@ -331,7 +331,7 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
               <div className="border border-border rounded-md p-3 space-y-2">
                 {['DeWalt', 'Milwaukee', 'Ryobi', 'Makita', 'Black & Decker'].map((brand) => (
                   <div key={brand} className="flex items-center space-x-2">
-                    <Checkbox 
+                    <Checkbox
                       id={brand}
                       checked={selectedBrands.includes(brand)}
                       onCheckedChange={(checked) => {
@@ -421,8 +421,8 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
             <div>
               <Label className="mb-2">Default Stepper</Label>
               <div className="flex items-center border border-border rounded-md w-fit">
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   size="icon"
                   className="h-10 w-10 rounded-none border-r"
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -433,8 +433,8 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                 <div className="w-16 h-10 flex items-center justify-center font-medium">
                   {quantity}
                 </div>
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   size="icon"
                   className="h-10 w-10 rounded-none border-l"
                   onClick={() => setQuantity(quantity + 1)}
@@ -447,8 +447,8 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
             <div>
               <Label className="mb-2">Large Stepper</Label>
               <div className="flex items-center border border-border rounded-md w-fit">
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   className="h-12 px-4 rounded-none border-r"
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                   disabled={quantity <= 1}
@@ -458,8 +458,8 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                 <div className="w-20 h-12 flex items-center justify-center font-medium text-lg">
                   {quantity}
                 </div>
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   className="h-12 px-4 rounded-none border-l"
                   onClick={() => setQuantity(quantity + 1)}
                 >
@@ -626,8 +626,8 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                 <div className="space-y-2">
                   <Label htmlFor="cardNumber">Card Number</Label>
                   <div className="relative">
-                    <Input 
-                      id="cardNumber" 
+                    <Input
+                      id="cardNumber"
                       placeholder="1234 5678 9012 3456"
                       className="pr-12"
                     />
@@ -667,7 +667,7 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                       Save this card for future purchases
                     </Label>
                   </div>
-                  
+
                   <div className="flex items-center space-x-2">
                     <Checkbox id="billingAddress" />
                     <Label htmlFor="billingAddress" className="text-sm">
@@ -728,7 +728,7 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                   Back to Cart
                 </Button>
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="flex-1">
-                  <Button 
+                  <Button
                     className="w-full bg-primary hover:bg-primary/90 h-12"
                     onClick={() => toast.success('Order placed successfully!')}
                   >

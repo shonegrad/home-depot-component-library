@@ -147,7 +147,10 @@ export function StorybookLayout({
   return (
     <div className="flex h-screen bg-background text-foreground">
       {/* Sidebar */}
-      <div className="w-[280px] border-r border-border bg-card flex flex-col shrink-0">
+      <div
+        className="border-r border-border bg-card flex flex-col shrink-0 overflow-hidden"
+        style={{ width: 280, minWidth: 280, maxWidth: 280 }}
+      >
         <div className="p-4 border-b border-border">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-lg shadow-primary/20">

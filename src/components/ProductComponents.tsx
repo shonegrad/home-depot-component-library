@@ -199,7 +199,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                           <Button
                             variant="ghost"
                             size="icon"
-                            className="bg-white/90 hover:bg-white shadow-sm"
+                            className="bg-card/90 hover:bg-card shadow-sm"
                             onClick={() => toggleWishlist(product.id)}
                           >
                             <Heart className={`w-4 h-4 ${wishlistedProducts.includes(product.id) ? 'fill-red-500 text-red-500' : ''}`} />
@@ -210,7 +210,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                           <Button
                             variant="ghost"
                             size="icon"
-                            className="bg-white/90 hover:bg-white shadow-sm"
+                            className="bg-card/90 hover:bg-card shadow-sm"
                             onClick={() => toggleCompare(product.id)}
                           >
                             <BarChart3 className={`w-4 h-4 ${compareProducts.includes(product.id) ? 'text-primary' : ''}`} />
@@ -223,7 +223,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                               <Button
                                 variant="ghost"
                                 size="icon"
-                                className="bg-white/90 hover:bg-white shadow-sm"
+                                className="bg-card/90 hover:bg-card shadow-sm"
                               >
                                 <Eye className="w-4 h-4" />
                               </Button>
@@ -274,7 +274,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                       {/* Out of Stock Overlay */}
                       {!product.inStock && (
                         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                          <Badge variant="secondary" className="bg-white text-black font-medium">
+                          <Badge variant="secondary" className="bg-card text-black font-medium">
                             Out of Stock
                           </Badge>
                         </div>
@@ -357,7 +357,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-white border border-border rounded-lg shadow-lg p-4 z-50"
+            className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-card border border-border rounded-lg shadow-lg p-4 z-50"
           >
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2">
@@ -410,7 +410,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                                 <Button
                                   variant="ghost"
                                   size="icon"
-                                  className="bg-white/90 hover:bg-white shadow-sm"
+                                  className="bg-card/90 hover:bg-card shadow-sm"
                                   onClick={() => toggleWishlist(product.id)}
                                 >
                                   <Heart className={`w-4 h-4 ${wishlistedProducts.includes(product.id) ? 'fill-red-500 text-red-500' : ''}`} />
@@ -426,7 +426,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                                 transition={{ duration: 0.2 }}
                               >
                                 <Button
-                                  className="bg-white text-black hover:bg-white/90"
+                                  className="bg-card text-black hover:bg-card/90"
                                   onClick={() => addToCart(product.id)}
                                 >
                                   <ShoppingCart className="w-4 h-4 mr-2" />
@@ -510,7 +510,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                   </Button>
                 </div>
                 <div className="relative">
-                  <AspectRatio ratio={1} className="bg-white rounded-lg overflow-hidden">
+                  <AspectRatio ratio={1} className="bg-card rounded-lg overflow-hidden">
                     <ImageWithFallback
                       src="https://images.unsplash.com/photo-1609205797038-7ed45f8074bf?w=400&h=400&fit=crop"
                       alt="Milwaukee Impact Driver"
@@ -593,7 +593,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
               <Button
                 variant="ghost"
                 size="icon"
-                className="absolute top-4 right-4 bg-white/80 hover:bg-white"
+                className="absolute top-4 right-4 bg-card/80 hover:bg-card"
               >
                 <ZoomIn className="w-4 h-4" />
               </Button>

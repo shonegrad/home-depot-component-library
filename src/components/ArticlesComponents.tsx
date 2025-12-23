@@ -8,8 +8,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { motion, AnimatePresence } from 'motion/react';
 import { toast } from 'sonner@2.0.3';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import { 
-  Clock, 
+import {
+  Clock,
   User,
   Calendar,
   ArrowRight,
@@ -86,7 +86,7 @@ export function ArticlesComponents({ activeComponent }: { activeComponent: strin
             <div className="md:flex">
               <div className="md:w-1/2">
                 <div className="relative aspect-video md:aspect-square">
-                  <ImageWithFallback 
+                  <ImageWithFallback
                     src={articles[0].image}
                     alt={articles[0].title}
                     className="w-full h-full object-cover"
@@ -105,7 +105,7 @@ export function ArticlesComponents({ activeComponent }: { activeComponent: strin
                       {articles[0].readTime}
                     </div>
                   </div>
-                  
+
                   <div>
                     <h2 className="text-2xl font-semibold mb-2">{articles[0].title}</h2>
                     <p className="text-muted-foreground mb-4">{articles[0].excerpt}</p>
@@ -139,13 +139,13 @@ export function ArticlesComponents({ activeComponent }: { activeComponent: strin
               <Card key={article.id} className="group hover:shadow-lg transition-shadow duration-200">
                 <CardHeader className="p-0">
                   <div className="relative aspect-video overflow-hidden rounded-t-lg">
-                    <ImageWithFallback 
+                    <ImageWithFallback
                       src={article.image}
                       alt={article.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
                     />
                     <div className="absolute top-2 right-2 flex gap-2">
-                      <Button variant="ghost" size="icon" className="w-8 h-8 bg-white/80 hover:bg-white">
+                      <Button variant="ghost" size="icon" className="w-8 h-8 bg-card/80 hover:bg-card">
                         <Bookmark className="w-4 h-4" />
                       </Button>
                     </div>
@@ -160,7 +160,7 @@ export function ArticlesComponents({ activeComponent }: { activeComponent: strin
                         {article.readTime}
                       </div>
                     </div>
-                    
+
                     <div>
                       <h4 className="font-semibold line-clamp-2 mb-2">{article.title}</h4>
                       <p className="text-sm text-muted-foreground line-clamp-2">{article.excerpt}</p>
@@ -190,7 +190,7 @@ export function ArticlesComponents({ activeComponent }: { activeComponent: strin
     return (
       <div className="space-y-8">
         <h3 className="text-lg font-semibold">Article Detail Layout</h3>
-        
+
         <div className="max-w-4xl mx-auto">
           {/* Article Header */}
           <div className="space-y-6">
@@ -202,13 +202,13 @@ export function ArticlesComponents({ activeComponent }: { activeComponent: strin
                   15 min read
                 </div>
               </div>
-              
+
               <h1 className="text-4xl font-bold">How to Build a Deck: Complete Beginner's Guide</h1>
-              
+
               <p className="text-xl text-muted-foreground">
                 Learn the step-by-step process of building a beautiful deck for your backyard, from planning to finishing touches.
               </p>
-              
+
               <div className="flex items-center justify-between py-4">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 bg-muted rounded-full flex items-center justify-center">
@@ -219,7 +219,7 @@ export function ArticlesComponents({ activeComponent }: { activeComponent: strin
                     <p className="text-sm text-muted-foreground">March 10, 2024</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-2">
                   <Button variant="outline" size="sm">
                     <Bookmark className="w-4 h-4 mr-2" />
@@ -237,7 +237,7 @@ export function ArticlesComponents({ activeComponent }: { activeComponent: strin
 
             {/* Hero Image */}
             <div className="relative aspect-video overflow-hidden rounded-lg">
-              <ImageWithFallback 
+              <ImageWithFallback
                 src="https://images.unsplash.com/photo-1416331108676-a22ccb276e35?w=800&h=500&fit=crop"
                 alt="Deck building project"
                 className="w-full h-full object-cover"
@@ -247,19 +247,19 @@ export function ArticlesComponents({ activeComponent }: { activeComponent: strin
             {/* Article Content */}
             <div className="prose prose-lg max-w-none">
               <p className="text-lg">
-                Building a deck is one of the most rewarding DIY projects you can undertake. Not only does it add value to your home, 
+                Building a deck is one of the most rewarding DIY projects you can undertake. Not only does it add value to your home,
                 but it also creates a beautiful outdoor space for family gatherings and relaxation.
               </p>
-              
+
               <h2>Planning Your Deck Project</h2>
               <p>
-                Before you start building, proper planning is essential. Consider the size, location, and materials you'll use. 
+                Before you start building, proper planning is essential. Consider the size, location, and materials you'll use.
                 Check with your local building department about permits and building codes.
               </p>
-              
+
               <h3>Tools and Materials Needed</h3>
               <p>Here's what you'll need to get started:</p>
-              
+
               {/* Inline Product Recommendations */}
               <div className="not-prose bg-muted/30 p-6 rounded-lg my-8">
                 <h4 className="font-semibold mb-4">Recommended Tools for This Project</h4>
@@ -269,9 +269,9 @@ export function ArticlesComponents({ activeComponent }: { activeComponent: strin
                     { name: 'Circular Saw', price: '$129.99', image: 'https://images.unsplash.com/photo-1622650316687-e5c8e8c0b02e?w=150&h=150&fit=crop' },
                     { name: 'Level Set', price: '$39.99', image: 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09b8?w=150&h=150&fit=crop' }
                   ].map((tool) => (
-                    <div key={tool.name} className="flex items-center gap-3 p-3 bg-white rounded-lg border">
+                    <div key={tool.name} className="flex items-center gap-3 p-3 bg-card rounded-lg border">
                       <div className="w-12 h-12 rounded-md overflow-hidden">
-                        <ImageWithFallback 
+                        <ImageWithFallback
                           src={tool.image}
                           alt={tool.name}
                           className="w-full h-full object-cover"
@@ -288,10 +288,10 @@ export function ArticlesComponents({ activeComponent }: { activeComponent: strin
                   ))}
                 </div>
               </div>
-              
+
               <h2>Step-by-Step Instructions</h2>
               <p>
-                Follow these detailed steps to build your deck safely and efficiently. Take your time with each step to ensure 
+                Follow these detailed steps to build your deck safely and efficiently. Take your time with each step to ensure
                 the best results.
               </p>
             </div>
@@ -308,7 +308,7 @@ export function ArticlesComponents({ activeComponent }: { activeComponent: strin
                   Comments (12)
                 </Button>
               </div>
-              
+
               <div className="flex items-center gap-2">
                 <Button variant="outline" size="sm">
                   <Download className="w-4 h-4 mr-2" />
@@ -329,7 +329,7 @@ export function ArticlesComponents({ activeComponent }: { activeComponent: strin
   return (
     <div className="space-y-6">
       <h3 className="text-lg font-semibold">Project Recommendation Card</h3>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Start Your Project Card */}
         <Card className="relative overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
@@ -341,7 +341,7 @@ export function ArticlesComponents({ activeComponent }: { activeComponent: strin
                 </div>
                 <Badge className="bg-primary">New Project</Badge>
               </div>
-              
+
               <div>
                 <h3 className="text-xl font-semibold mb-2">Ready to Start Your Deck Project?</h3>
                 <p className="text-muted-foreground mb-4">
@@ -388,20 +388,20 @@ export function ArticlesComponents({ activeComponent }: { activeComponent: strin
             <p className="text-sm text-muted-foreground">
               Estimate the cost and materials needed for your deck project.
             </p>
-            
+
             <div className="space-y-3">
               <div>
                 <label className="text-sm font-medium">Deck Size (sq ft)</label>
                 <div className="flex items-center gap-2 mt-1">
-                  <input 
-                    type="number" 
-                    placeholder="200" 
+                  <input
+                    type="number"
+                    placeholder="200"
                     className="flex-1 px-3 py-2 border border-border rounded-md text-sm"
                   />
                   <span className="text-sm text-muted-foreground">sq ft</span>
                 </div>
               </div>
-              
+
               <div>
                 <label className="text-sm font-medium">Material Type</label>
                 <select className="w-full px-3 py-2 border border-border rounded-md text-sm mt-1">
