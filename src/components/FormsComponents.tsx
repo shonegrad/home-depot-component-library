@@ -12,12 +12,12 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { motion } from 'motion/react';
 import { toast } from 'sonner@2.0.3';
-import { 
-  Search, 
-  Plus, 
-  Minus, 
-  MapPin, 
-  CreditCard, 
+import {
+  Search,
+  Plus,
+  Minus,
+  MapPin,
+  CreditCard,
   Scan,
   Mic,
   Eye,
@@ -68,22 +68,22 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <Label htmlFor="default">Default State</Label>
-              <Input id="default" placeholder="Enter your email" />
+              <Input id="default" placeholder="Enter your email" className="h-10" />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="focused">Focused State</Label>
-              <Input id="focused" placeholder="Enter your email" className="ring-2 ring-primary ring-offset-2" />
+              <Input id="focused" placeholder="Enter your email" className="h-10 ring-2 ring-primary ring-offset-2" />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="filled">Filled State</Label>
-              <Input id="filled" defaultValue="john.doe@email.com" />
+              <Input id="filled" defaultValue="john.doe@email.com" className="h-10" />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="error">Error State</Label>
-              <Input id="error" placeholder="Enter your email" className="border-destructive" />
+              <Input id="error" placeholder="Enter your email" className="h-10 border-destructive focus-visible:ring-destructive" />
               <p className="text-sm text-destructive flex items-center gap-2">
                 <AlertCircle className="w-4 h-4" />
                 Please enter a valid email address
@@ -112,13 +112,13 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
             <div className="space-y-2">
               <Label>Password Input</Label>
               <div className="relative">
-                <Input 
+                <Input
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter password"
                   className="pr-10"
                 />
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   size="icon"
                   className="absolute right-2 top-1/2 transform -translate-y-1/2 w-6 h-6"
                   onClick={() => setShowPassword(!showPassword)}
@@ -151,7 +151,7 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
               <Label className="mb-2">Smart Search with Autocomplete</Label>
               <div className="relative max-w-2xl">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                <Input 
+                <Input
                   placeholder="What can we help you find today?"
                   className="pl-10 pr-4 py-3 text-base focus:ring-2 focus:ring-primary/20 transition-all"
                   value={searchQuery}
@@ -163,10 +163,10 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                   onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
                 />
                 {showSuggestions && (
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="absolute top-full left-0 right-0 bg-white border border-border rounded-md mt-1 shadow-lg z-50"
+                    className="absolute top-full left-0 right-0 bg-card border border-border rounded-md mt-1 shadow-lg z-50"
                   >
                     <div className="py-2">
                       <div className="px-3 py-1 text-xs font-medium text-muted-foreground">Popular searches</div>
@@ -194,9 +194,9 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                 <CardContent className="p-4">
                   <div className="relative">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                    <Input 
+                    <Input
                       placeholder="Search tools, materials..."
-                      className="pl-10 pr-24 py-3"
+                      className="pl-10 pr-24 h-10 py-2 text-sm"
                     />
                     <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
                       <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
@@ -211,7 +211,7 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                       </motion.div>
                     </div>
                   </div>
-                  <div className="flex gap-2 mt-3">
+                  <div className="flex flex-wrap gap-2 mt-3">
                     <Badge variant="secondary" className="text-xs">Tools</Badge>
                     <Badge variant="secondary" className="text-xs">Paint</Badge>
                     <Badge variant="secondary" className="text-xs">Hardware</Badge>
@@ -224,10 +224,10 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
               <Label className="mb-2">Search with Filters</Label>
               <Card className="max-w-3xl">
                 <CardContent className="p-4">
-                  <div className="flex gap-3">
+                  <div className="flex flex-col md:flex-row gap-3">
                     <div className="relative flex-1">
                       <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                      <Input 
+                      <Input
                         placeholder="Search products..."
                         className="pl-10 pr-4 py-3"
                       />
@@ -247,9 +247,9 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                       <Search className="w-4 h-4" />
                     </Button>
                   </div>
-                  
+
                   {/* Quick Filters */}
-                  <div className="flex items-center gap-2 mt-4">
+                  <div className="flex flex-wrap items-center gap-2 mt-4">
                     <span className="text-sm font-medium">Quick filters:</span>
                     {filterOptions.slice(0, 4).map((filter) => (
                       <Button
@@ -331,7 +331,7 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
               <div className="border border-border rounded-md p-3 space-y-2">
                 {['DeWalt', 'Milwaukee', 'Ryobi', 'Makita', 'Black & Decker'].map((brand) => (
                   <div key={brand} className="flex items-center space-x-2">
-                    <Checkbox 
+                    <Checkbox
                       id={brand}
                       checked={selectedBrands.includes(brand)}
                       onCheckedChange={(checked) => {
@@ -421,8 +421,8 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
             <div>
               <Label className="mb-2">Default Stepper</Label>
               <div className="flex items-center border border-border rounded-md w-fit">
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   size="icon"
                   className="h-10 w-10 rounded-none border-r"
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -433,8 +433,8 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                 <div className="w-16 h-10 flex items-center justify-center font-medium">
                   {quantity}
                 </div>
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   size="icon"
                   className="h-10 w-10 rounded-none border-l"
                   onClick={() => setQuantity(quantity + 1)}
@@ -447,8 +447,8 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
             <div>
               <Label className="mb-2">Large Stepper</Label>
               <div className="flex items-center border border-border rounded-md w-fit">
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   className="h-12 px-4 rounded-none border-r"
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                   disabled={quantity <= 1}
@@ -458,8 +458,8 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                 <div className="w-20 h-12 flex items-center justify-center font-medium text-lg">
                   {quantity}
                 </div>
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   className="h-12 px-4 rounded-none border-l"
                   onClick={() => setQuantity(quantity + 1)}
                 >
@@ -626,8 +626,8 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                 <div className="space-y-2">
                   <Label htmlFor="cardNumber">Card Number</Label>
                   <div className="relative">
-                    <Input 
-                      id="cardNumber" 
+                    <Input
+                      id="cardNumber"
                       placeholder="1234 5678 9012 3456"
                       className="pr-12"
                     />
@@ -667,7 +667,7 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                       Save this card for future purchases
                     </Label>
                   </div>
-                  
+
                   <div className="flex items-center space-x-2">
                     <Checkbox id="billingAddress" />
                     <Label htmlFor="billingAddress" className="text-sm">
@@ -728,7 +728,7 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
                   Back to Cart
                 </Button>
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="flex-1">
-                  <Button 
+                  <Button
                     className="w-full bg-primary hover:bg-primary/90 h-12"
                     onClick={() => toast.success('Order placed successfully!')}
                   >

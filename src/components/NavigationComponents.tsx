@@ -58,17 +58,17 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
       <div className="space-y-8">
         <div>
           <h3 className="text-lg font-semibold mb-4">Global Header - Desktop</h3>
-          <div className="border border-border rounded-lg p-4 bg-white shadow-sm">
-            <header className="flex items-center justify-between py-4 px-6">
-              <div className="flex items-center gap-8">
+          <div className="border border-border rounded-lg p-4 bg-card shadow-sm">
+            <header className="flex items-center justify-between py-3 px-6">
+              <div className="flex items-center gap-4 md:gap-6">
                 <motion.div
                   className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center cursor-pointer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Home className="w-6 h-6 text-white" />
+                  <Home className="w-6 h-6 text-primary-foreground" />
                 </motion.div>
-                <nav className="hidden md:flex items-center gap-6">
+                <nav className="hidden lg:flex items-center gap-6">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant="ghost" className="font-medium hover:text-primary">
@@ -91,12 +91,12 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
                 </nav>
               </div>
 
-              <div className="flex-1 max-w-2xl mx-8">
+              <div className="flex-1 max-w-2xl mx-4 md:mx-8 hidden md:block">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                   <Input
                     placeholder="What can we help you find today?"
-                    className="pl-10 pr-24 py-3 text-base focus:ring-2 focus:ring-primary/20 transition-all"
+                    className="pl-10 pr-24 h-10 text-sm focus:ring-2 focus:ring-primary/20 transition-all bg-muted/20 border-muted-foreground/20 hover:border-primary/50"
                     value={searchValue}
                     onChange={(e) => {
                       setSearchValue(e.target.value);
@@ -117,7 +117,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
                   {/* Search Suggestions Dropdown */}
                   {showSearchSuggestions && (
                     <motion.div
-                      className="absolute top-full left-0 right-0 bg-white border border-border rounded-md mt-1 shadow-lg z-50"
+                      className="absolute top-full left-0 right-0 bg-card border border-border rounded-md mt-1 shadow-lg z-50"
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
@@ -239,7 +239,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
 
         <div>
           <h3 className="text-lg font-semibold mb-4">Global Header - Mobile</h3>
-          <div className="border border-border rounded-lg p-4 bg-white max-w-sm">
+          <div className="border border-border rounded-lg p-4 bg-card max-w-sm">
             <header className="flex items-center justify-between py-3">
               <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
                 <SheetTrigger asChild>
@@ -251,7 +251,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
                   <div className="py-4">
                     <div className="flex items-center gap-3 mb-6">
                       <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                        <Home className="w-4 h-4 text-white" />
+                        <Home className="w-4 h-4 text-primary-foreground" />
                       </div>
                       <span className="font-semibold">Home Depot</span>
                     </div>
@@ -268,7 +268,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
               </Sheet>
 
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <Home className="w-4 h-4 text-white" />
+                <Home className="w-4 h-4 text-primary-foreground" />
               </div>
 
               <Button variant="ghost" size="icon" className="relative">
@@ -292,7 +292,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
       <div className="space-y-8">
         <div>
           <h3 className="text-lg font-semibold mb-4">Hamburger Menu - Mobile</h3>
-          <div className="border border-border rounded-lg p-4 bg-white max-w-sm mx-auto">
+          <div className="border border-border rounded-lg p-4 bg-card max-w-sm mx-auto">
             <div className="flex items-center justify-between py-3 px-2">
               <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
                 <SheetTrigger asChild>
@@ -303,10 +303,10 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
                 <SheetContent side="left" className="w-80 p-0">
                   <div className="flex flex-col h-full">
                     {/* Header */}
-                    <div className="p-6 bg-primary text-white">
+                    <div className="p-6 bg-primary text-primary-foreground">
                       <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                          <div className="w-10 h-10 bg-card rounded-lg flex items-center justify-center">
                             <Home className="w-5 h-5 text-primary" />
                           </div>
                           <div>
@@ -403,7 +403,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
               </Sheet>
 
               <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <Home className="w-5 h-5 text-white" />
+                <Home className="w-5 h-5 text-primary-foreground" />
               </div>
 
               <Button variant="ghost" size="icon" className="relative hover:bg-primary/10">
@@ -421,7 +421,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
 
         <div>
           <h3 className="text-lg font-semibold mb-4">Mobile Bottom Navigation</h3>
-          <div className="border border-border rounded-lg p-4 bg-white max-w-sm mx-auto">
+          <div className="border border-border rounded-lg p-4 bg-card max-w-sm mx-auto">
             <nav className="flex items-center justify-around py-2">
               <motion.div whileTap={{ scale: 0.95 }}>
                 <Button variant="ghost" className="flex flex-col items-center gap-1 p-2">
@@ -470,7 +470,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
     return (
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Mobile Bottom Navigation</h3>
-        <div className="border border-border rounded-lg p-4 bg-white max-w-sm mx-auto">
+        <div className="border border-border rounded-lg p-4 bg-card max-w-sm mx-auto">
           <nav className="flex items-center justify-around py-2">
             <motion.div whileTap={{ scale: 0.95 }}>
               <Button variant="ghost" className="flex flex-col items-center gap-1 p-2">
@@ -518,7 +518,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
     return (
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Breadcrumb Navigation</h3>
-        <div className="border border-border rounded-lg p-4 bg-white">
+        <div className="border border-border rounded-lg p-4 bg-card">
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -552,7 +552,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
       <div className="space-y-8">
         <div>
           <h3 className="text-lg font-semibold mb-4">Sticky Filter & Sort Bar</h3>
-          <div className="border border-border rounded-lg p-4 bg-white shadow-sm">
+          <div className="border border-border rounded-lg p-4 bg-card shadow-sm">
             <div className="flex items-center justify-between py-3 px-4 border-b border-border bg-muted/30 rounded-md">
               <div className="flex items-center gap-4">
                 <DropdownMenu>
@@ -561,7 +561,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
                       <Filter className="w-4 h-4" />
                       Filter
                       {selectedFilters.length > 0 && (
-                        <Badge className="ml-1 bg-primary text-white">
+                        <Badge className="ml-1 bg-primary text-primary-foreground">
                           {selectedFilters.length}
                         </Badge>
                       )}
@@ -668,7 +668,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
 
         <div>
           <h3 className="text-lg font-semibold mb-4">Mobile Filter Sheet</h3>
-          <div className="border border-border rounded-lg p-4 bg-white max-w-sm mx-auto">
+          <div className="border border-border rounded-lg p-4 bg-card max-w-sm mx-auto">
             <div className="flex items-center justify-between py-2">
               <span className="text-sm font-medium">524 results</span>
               <div className="flex gap-2">
@@ -726,7 +726,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
     <div className="space-y-6">
       <div>
         <h3 className="text-lg font-semibold mb-4">Enhanced Search Bar</h3>
-        <div className="border border-border rounded-lg p-4 bg-white max-w-lg shadow-sm">
+        <div className="border border-border rounded-lg p-4 bg-card max-w-lg shadow-sm">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
             <Input

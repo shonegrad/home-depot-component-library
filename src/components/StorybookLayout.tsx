@@ -6,21 +6,21 @@ import { useTheme } from './theme-provider';
 import {
   Home,
   Menu,
-  FormInput,
-  Package,
+  TextFields,
+  Inventory2,
   ShoppingCart,
-  FileText,
+  Article,
   Layers,
-  ChevronDown,
+  ExpandMore,
   ChevronRight,
-  Sun,
-  Moon,
+  LightMode,
+  DarkMode,
   Laptop,
-  Smartphone,
+  PhoneAndroid,
   Tablet,
   Code
-} from 'lucide-react';
-import { cn } from '../lib/utils'; // Assuming utils exists, if not I'll fix
+} from '@mui/icons-material';
+import { cn } from '../lib/utils';
 
 const sections = [
   {
@@ -38,7 +38,7 @@ const sections = [
   {
     id: 'forms',
     title: 'Forms',
-    icon: FormInput,
+    icon: TextFields,
     components: [
       'Text Input',
       'Search Bar',
@@ -52,7 +52,7 @@ const sections = [
   {
     id: 'product',
     title: 'Product',
-    icon: Package,
+    icon: Inventory2,
     components: [
       'Product Tile',
       'Product Carousel',
@@ -78,7 +78,7 @@ const sections = [
   {
     id: 'articles',
     title: 'Articles / Content',
-    icon: FileText,
+    icon: Article,
     components: [
       'Article List',
       'Article Detail',
@@ -136,18 +136,21 @@ export function StorybookLayout({
     );
   };
 
-  const getDeviceWidth = () => {
+  const getDeviceStyle = () => {
     switch (device) {
-      case 'mobile': return 'max-w-[375px]';
-      case 'tablet': return 'max-w-[768px]';
-      default: return 'max-w-full';
+      case 'mobile': return { width: '375px' };
+      case 'tablet': return { width: '768px' };
+      default: return { width: '100%' };
     }
   };
 
   return (
     <div className="flex h-screen bg-background text-foreground">
       {/* Sidebar */}
-      <div className="w-[280px] border-r border-border bg-card flex flex-col shrink-0">
+      <div
+        className="border-r border-border bg-card flex flex-col shrink-0 overflow-hidden"
+        style={{ width: 280, minWidth: 280, maxWidth: 280 }}
+      >
         <div className="p-4 border-b border-border">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-lg shadow-primary/20">
@@ -178,12 +181,12 @@ export function StorybookLayout({
                       onSectionChange(section.id);
                     }}
                   >
-                    <div className="flex items-center gap-2.5">
+                    <div className="flex items-center gap-4">
                       <Icon className="w-4 h-4" />
                       <span>{section.title}</span>
                     </div>
                     {isExpanded ? (
-                      <ChevronDown className="w-3.5 h-3.5 opacity-50" />
+                      <ExpandMore className="w-3.5 h-3.5 opacity-50" />
                     ) : (
                       <ChevronRight className="w-3.5 h-3.5 opacity-50" />
                     )}
@@ -220,7 +223,7 @@ export function StorybookLayout({
                 className="h-8 w-8"
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               >
-                {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                {theme === 'dark' ? <LightMode className="w-4 h-4" /> : <DarkMode className="w-4 h-4" />}
               </Button>
             </div>
           </div>
@@ -263,7 +266,7 @@ export function StorybookLayout({
                 className={`h-7 px-2 ${device === 'mobile' ? 'bg-background shadow-sm' : 'text-muted-foreground hover:bg-transparent'}`}
                 onClick={() => setDevice('mobile')}
               >
-                <Smartphone className="w-4 h-4 mr-1.5" />
+                <PhoneAndroid className="w-4 h-4 mr-1.5" />
                 <span className="text-xs">Mobile</span>
               </Button>
             </div>
@@ -275,7 +278,7 @@ export function StorybookLayout({
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               title="Toggle theme"
             >
-              {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              {theme === 'dark' ? <LightMode className="w-4 h-4" /> : <DarkMode className="w-4 h-4" />}
             </Button>
 
             <Button
@@ -293,7 +296,10 @@ export function StorybookLayout({
         {/* Content Canvas */}
         <ScrollArea className="flex-1">
           <div className="p-8 flex justify-center min-h-[calc(100vh-3.5rem)]">
-            <div className={`w-full transition-all duration-300 ease-in-out ${getDeviceWidth()}`}>
+            <div
+              className="transition-all duration-500 ease-in-out shrink-0"
+              style={getDeviceStyle()}
+            >
               <div className="bg-background border border-border rounded-xl shadow-sm overflow-hidden min-h-[500px]">
                 {/* Mock Browser/Device Header for context */}
                 <div className="h-8 bg-muted border-b border-border flex items-center px-4 gap-2">
