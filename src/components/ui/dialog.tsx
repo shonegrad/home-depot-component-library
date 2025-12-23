@@ -4,6 +4,7 @@ import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog@1.1.6";
 import { XIcon } from "lucide-react@0.487.0";
 
+import { useDevicePortal } from "../../lib/device-portal-context";
 import { cn } from "./utils";
 
 function Dialog({
@@ -54,8 +55,10 @@ function DialogContent({
   children,
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content>) {
+  const { container } = useDevicePortal();
+
   return (
-    <DialogPortal data-slot="dialog-portal">
+    <DialogPortal data-slot="dialog-portal" container={container}>
       <DialogOverlay />
       <DialogPrimitive.Content
         data-slot="dialog-content"

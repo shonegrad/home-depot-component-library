@@ -21,6 +21,7 @@ import {
   Code
 } from '@mui/icons-material';
 import { cn } from '../lib/utils';
+import { DevicePortalProvider } from '../lib/device-portal-context';
 
 const sections = [
   {
@@ -127,6 +128,12 @@ export function StorybookLayout({
   const { theme, setTheme } = useTheme();
   const [device, setDevice] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
   const [showCode, setShowCode] = useState(false);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const [container, setContainer] = useState<HTMLElement | null>(null);
+
+  React.useEffect(() => {
+    setContainer(containerRef.current);
+  }, []);
 
   const toggleSection = (sectionId: string) => {
     setExpandedSections(prev =>
@@ -215,7 +222,7 @@ export function StorybookLayout({
 
         <div className="p-4 border-t border-border mt-auto">
           <div className="flex items-center justify-between">
-            <span className="text-xs text-muted-foreground">© 2024 Home Depot</span>
+            <span className="text-xs text-muted-foreground">© 2025 Home Depot</span>
             <div className="flex gap-1">
               <Button
                 variant="ghost"
@@ -294,30 +301,32 @@ export function StorybookLayout({
         </div>
 
         {/* Content Canvas */}
-        <ScrollArea className="flex-1">
-          <div className="p-8 flex justify-center min-h-[calc(100vh-3.5rem)]">
-            <div
-              className="transition-all duration-500 ease-in-out shrink-0"
-              style={getDeviceStyle()}
-            >
-              <div className="bg-background border border-border rounded-xl shadow-sm overflow-hidden min-h-[500px]">
-                {/* Mock Browser/Device Header for context */}
-                <div className="h-8 bg-muted border-b border-border flex items-center px-4 gap-2">
-                  <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-red-400/20 border border-red-500/30"></div>
-                    <div className="w-2.5 h-2.5 rounded-full bg-amber-400/20 border border-amber-500/30"></div>
-                    <div className="w-2.5 h-2.5 rounded-full bg-green-400/20 border border-green-500/30"></div>
-                  </div>
-                  <div className="flex-1 text-center">
-                    <div className="inline-block px-3 py-0.5 bg-background rounded text-[10px] text-muted-foreground font-medium border border-border shadow-sm">
-                      http://homedepot.ca/{activeSection}/{activeComponent.toLowerCase().replace(/\s+/g, '-')}
-                    </div>
-                  </div>
+        <div className="flex-1 overflow-hidden p-8 flex flex-col items-center">
+          <div
+            className="transition-all duration-500 ease-in-out shrink-0 flex flex-col bg-background border border-border rounded-xl shadow-sm overflow-hidden flex-1 min-h-0"
+            style={{
+              ...getDeviceStyle(),
+            }}
+          >
+            {/* Mock Browser/Device Header for context */}
+            <div className="h-8 bg-muted border-b border-border flex items-center px-4 gap-2 shrink-0">
+              <div className="flex gap-1.5">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-400/20 border border-red-500/30"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-amber-400/20 border border-amber-500/30"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-green-400/20 border border-green-500/30"></div>
+              </div>
+              <div className="flex-1 text-center overflow-hidden px-2">
+                <div className="inline-block px-3 py-0.5 bg-background rounded text-[10px] text-muted-foreground font-medium border border-border shadow-sm whitespace-nowrap overflow-hidden text-ellipsis max-w-full">
+                  http://homedepot.ca/{activeSection}/{activeComponent.toLowerCase().replace(/\s+/g, '-')}
                 </div>
+              </div>
+            </div>
 
-                <div className="relative">
-                  {showCode ? (
-                    <div className="p-6 bg-slate-950 text-slate-50 font-mono text-sm overflow-auto min-h-[400px]">
+            <div className="flex-1 relative min-h-0" ref={containerRef}>
+              <DevicePortalProvider value={{ container }}>
+                {showCode ? (
+                  <ScrollArea className="h-full">
+                    <div className="p-6 bg-slate-950 text-slate-50 font-mono text-sm">
                       <pre>
                         {`// Example usage of ${activeComponent}
 
@@ -334,16 +343,18 @@ export default function Example() {
 }`}
                       </pre>
                     </div>
-                  ) : (
+                  </ScrollArea>
+                ) : (
+                  <ScrollArea className="h-full">
                     <div className="p-8">
                       {children}
                     </div>
-                  )}
-                </div>
-              </div>
+                  </ScrollArea>
+                )}
+              </DevicePortalProvider>
             </div>
           </div>
-        </ScrollArea>
+        </div>
       </div>
     </div>
   );

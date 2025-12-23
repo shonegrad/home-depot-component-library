@@ -4,6 +4,7 @@ import * as React from "react";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip@1.1.8";
 
 import { cn } from "./utils";
+import { useDevicePortal } from "../../lib/device-portal-context";
 
 function TooltipProvider({
   delayDuration = 0,
@@ -40,8 +41,10 @@ function TooltipContent({
   children,
   ...props
 }: React.ComponentProps<typeof TooltipPrimitive.Content>) {
+  const { container } = useDevicePortal();
+
   return (
-    <TooltipPrimitive.Portal>
+    <TooltipPrimitive.Portal container={container}>
       <TooltipPrimitive.Content
         data-slot="tooltip-content"
         sideOffset={sideOffset}
