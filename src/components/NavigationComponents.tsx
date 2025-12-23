@@ -9,29 +9,29 @@ import { Separator } from './ui/separator';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { Card, CardContent } from './ui/card';
 import { motion } from 'motion/react';
-import { 
-  Search, 
-  ShoppingCart, 
-  User, 
-  Menu, 
-  Home, 
-  Package, 
-  FileText, 
+import {
+  Search,
+  ShoppingCart,
+  Person as User,
+  Menu,
+  Home,
+  Inventory2 as Package,
+  Article as FileText,
   Settings,
-  ChevronDown,
-  Filter,
-  ArrowUpDown,
-  Scan,
+  ExpandMore as ChevronDown,
+  FilterList as Filter,
+  SwapVert as ArrowUpDown,
+  QrCodeScanner as Scan,
   Mic,
-  Bell,
-  MapPin,
-  Truck,
+  Notifications as Bell,
+  LocationOn as MapPin,
+  LocalShipping as Truck,
   Star,
-  Clock,
-  Grid3X3,
-  X,
+  AccessTime as Clock,
+  Apps as Grid3X3,
+  Close as X,
   ChevronRight
-} from 'lucide-react';
+} from '@mui/icons-material';
 
 export function NavigationComponents({ activeComponent }: { activeComponent: string }) {
   const [cartCount, setCartCount] = useState(3);
@@ -61,7 +61,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
           <div className="border border-border rounded-lg p-4 bg-white shadow-sm">
             <header className="flex items-center justify-between py-4 px-6">
               <div className="flex items-center gap-8">
-                <motion.div 
+                <motion.div
                   className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center cursor-pointer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -94,7 +94,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
               <div className="flex-1 max-w-2xl mx-8">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                  <Input 
+                  <Input
                     placeholder="What can we help you find today?"
                     className="pl-10 pr-24 py-3 text-base focus:ring-2 focus:ring-primary/20 transition-all"
                     value={searchValue}
@@ -116,7 +116,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
 
                   {/* Search Suggestions Dropdown */}
                   {showSearchSuggestions && (
-                    <motion.div 
+                    <motion.div
                       className="absolute top-full left-0 right-0 bg-white border border-border rounded-md mt-1 shadow-lg z-50"
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -148,8 +148,8 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
                 <Button variant="ghost" size="icon" className="relative hover:bg-primary/10">
                   <Bell className="w-5 h-5" />
                   {notificationCount > 0 && (
-                    <Badge 
-                      variant="destructive" 
+                    <Badge
+                      variant="destructive"
                       className="absolute -top-2 -right-2 w-5 h-5 p-0 flex items-center justify-center text-xs bg-primary border-0"
                     >
                       {notificationCount}
@@ -161,8 +161,8 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
                   <DialogTrigger asChild>
                     <Button variant="ghost" size="icon" className="relative hover:bg-primary/10">
                       <ShoppingCart className="w-5 h-5" />
-                      <Badge 
-                        variant="destructive" 
+                      <Badge
+                        variant="destructive"
                         className="absolute -top-2 -right-2 w-5 h-5 p-0 flex items-center justify-center text-xs bg-primary border-0"
                       >
                         {cartCount}
@@ -198,7 +198,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
                     </div>
                   </DialogContent>
                 </Dialog>
-                
+
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="ghost" className="flex items-center gap-2 hover:bg-primary/10">
@@ -273,8 +273,8 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
 
               <Button variant="ghost" size="icon" className="relative">
                 <ShoppingCart className="w-5 h-5" />
-                <Badge 
-                  variant="destructive" 
+                <Badge
+                  variant="destructive"
                   className="absolute -top-2 -right-2 w-5 h-5 p-0 flex items-center justify-center text-xs bg-primary border-0"
                 >
                   {cartCount}
@@ -408,8 +408,8 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
 
               <Button variant="ghost" size="icon" className="relative hover:bg-primary/10">
                 <ShoppingCart className="w-5 h-5" />
-                <Badge 
-                  variant="destructive" 
+                <Badge
+                  variant="destructive"
                   className="absolute -top-2 -right-2 w-5 h-5 p-0 flex items-center justify-center text-xs bg-primary border-0"
                 >
                   {cartCount}
@@ -445,8 +445,8 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
                 <Button variant="ghost" className="flex flex-col items-center gap-1 p-2 relative">
                   <ShoppingCart className="w-5 h-5" />
                   <span className="text-xs">Cart</span>
-                  <Badge 
-                    variant="destructive" 
+                  <Badge
+                    variant="destructive"
                     className="absolute -top-1 -right-1 w-4 h-4 p-0 flex items-center justify-center text-xs bg-primary border-0 animate-pulse"
                   >
                     {cartCount}
@@ -494,8 +494,8 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
               <Button variant="ghost" className="flex flex-col items-center gap-1 p-2 relative">
                 <ShoppingCart className="w-5 h-5" />
                 <span className="text-xs">Cart</span>
-                <Badge 
-                  variant="destructive" 
+                <Badge
+                  variant="destructive"
                   className="absolute -top-1 -right-1 w-4 h-4 p-0 flex items-center justify-center text-xs bg-primary border-0 animate-pulse"
                 >
                   {cartCount}
@@ -603,13 +603,13 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
                     </div>
                   </DropdownMenuContent>
                 </DropdownMenu>
-                
+
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-medium">1,247 results</span>
                   <span className="text-sm text-muted-foreground">for "power tools"</span>
                 </div>
               </div>
-              
+
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="outline" className="flex items-center gap-2 hover:bg-primary/10">
@@ -647,15 +647,15 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
                 {selectedFilters.map((filter) => (
                   <Badge key={filter} variant="secondary" className="gap-1">
                     {filter}
-                    <X 
-                      className="w-3 h-3 cursor-pointer hover:text-destructive" 
+                    <X
+                      className="w-3 h-3 cursor-pointer hover:text-destructive"
                       onClick={() => setSelectedFilters(selectedFilters.filter(f => f !== filter))}
                     />
                   </Badge>
                 ))}
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
+                <Button
+                  variant="ghost"
+                  size="sm"
                   onClick={() => setSelectedFilters([])}
                   className="text-muted-foreground hover:text-destructive"
                 >
@@ -729,7 +729,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
         <div className="border border-border rounded-lg p-4 bg-white max-w-lg shadow-sm">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-            <Input 
+            <Input
               placeholder="Search tools, materials, and more..."
               className="pl-10 pr-24 py-3 text-base focus:ring-2 focus:ring-primary/20"
               value={searchValue}

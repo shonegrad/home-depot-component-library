@@ -2,17 +2,25 @@ import React, { useState } from 'react';
 import { Button } from './ui/button';
 import { ScrollArea } from './ui/scroll-area';
 import { Separator } from './ui/separator';
-import { 
-  Home, 
-  Menu, 
-  FormInput, 
-  Package, 
-  ShoppingCart, 
-  FileText, 
+import { useTheme } from './theme-provider';
+import {
+  Home,
+  Menu,
+  FormInput,
+  Package,
+  ShoppingCart,
+  FileText,
   Layers,
   ChevronDown,
-  ChevronRight
+  ChevronRight,
+  Sun,
+  Moon,
+  Laptop,
+  Smartphone,
+  Tablet,
+  Code
 } from 'lucide-react';
+import { cn } from '../lib/utils'; // Assuming utils exists, if not I'll fix
 
 const sections = [
   {
@@ -88,6 +96,15 @@ const sections = [
       'Floating Action Button',
       'Loading States'
     ]
+  },
+  {
+    id: 'context',
+    title: 'Context Examples',
+    icon: Layers,
+    components: [
+      'Product Listing Page',
+      'Checkout Page'
+    ]
   }
 ];
 
@@ -99,74 +116,87 @@ interface StorybookLayoutProps {
   children: React.ReactNode;
 }
 
-export function StorybookLayout({ 
-  activeSection, 
-  activeComponent, 
-  onSectionChange, 
-  onComponentChange, 
-  children 
+export function StorybookLayout({
+  activeSection,
+  activeComponent,
+  onSectionChange,
+  onComponentChange,
+  children
 }: StorybookLayoutProps) {
   const [expandedSections, setExpandedSections] = useState<string[]>([activeSection]);
+  const { theme, setTheme } = useTheme();
+  const [device, setDevice] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
+  const [showCode, setShowCode] = useState(false);
 
   const toggleSection = (sectionId: string) => {
-    setExpandedSections(prev => 
-      prev.includes(sectionId) 
+    setExpandedSections(prev =>
+      prev.includes(sectionId)
         ? prev.filter(id => id !== sectionId)
         : [...prev, sectionId]
     );
   };
 
+  const getDeviceWidth = () => {
+    switch (device) {
+      case 'mobile': return 'max-w-[375px]';
+      case 'tablet': return 'max-w-[768px]';
+      default: return 'max-w-full';
+    }
+  };
+
   return (
-    <div className="flex h-screen bg-background">
+    <div className="flex h-screen bg-background text-foreground">
       {/* Sidebar */}
-      <div className="w-80 border-r border-border bg-card">
-        <div className="p-6 border-b border-border">
+      <div className="w-[280px] border-r border-border bg-card flex flex-col shrink-0">
+        <div className="p-4 border-b border-border">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <Home className="w-4 h-4 text-primary-foreground" />
+            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-lg shadow-primary/20">
+              <Home className="w-5 h-5 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="font-semibold text-lg">Home Depot Canada 2.0</h1>
-              <p className="text-sm text-muted-foreground">Component Library</p>
+              <h1 className="font-bold text-base leading-tight">HD Component</h1>
+              <p className="text-xs text-muted-foreground">Library v2.0</p>
             </div>
           </div>
         </div>
 
         <ScrollArea className="flex-1">
-          <div className="p-4">
+          <div className="p-3 space-y-1">
             {sections.map((section) => {
               const Icon = section.icon;
               const isExpanded = expandedSections.includes(section.id);
-              const isActive = activeSection === section.id;
+              const isActiveSection = activeSection === section.id;
 
               return (
-                <div key={section.id} className="mb-2">
+                <div key={section.id}>
                   <Button
-                    variant={isActive ? "secondary" : "ghost"}
-                    className="w-full justify-between p-3 h-auto"
+                    variant="ghost"
+                    size="sm"
+                    className={`w-full justify-between h-9 mb-1 ${isActiveSection ? 'bg-secondary font-medium' : 'text-muted-foreground'}`}
                     onClick={() => {
                       toggleSection(section.id);
                       onSectionChange(section.id);
                     }}
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2.5">
                       <Icon className="w-4 h-4" />
-                      <span className="font-medium">{section.title}</span>
+                      <span>{section.title}</span>
                     </div>
                     {isExpanded ? (
-                      <ChevronDown className="w-4 h-4" />
+                      <ChevronDown className="w-3.5 h-3.5 opacity-50" />
                     ) : (
-                      <ChevronRight className="w-4 h-4" />
+                      <ChevronRight className="w-3.5 h-3.5 opacity-50" />
                     )}
                   </Button>
 
                   {isExpanded && (
-                    <div className="ml-4 mt-2 space-y-1">
+                    <div className="ml-4 pl-3 border-l border-border/50 space-y-0.5 mb-2">
                       {section.components.map((component) => (
                         <Button
                           key={component}
-                          variant={activeComponent === component ? "secondary" : "ghost"}
-                          className="w-full justify-start p-2 h-auto text-sm font-normal"
+                          variant="ghost"
+                          size="sm"
+                          className={`w-full justify-start h-8 text-sm ${activeComponent === component ? 'bg-primary/10 text-primary font-medium' : 'text-muted-foreground hover:text-foreground'}`}
                           onClick={() => onComponentChange(component)}
                         >
                           {component}
@@ -179,21 +209,133 @@ export function StorybookLayout({
             })}
           </div>
         </ScrollArea>
+
+        <div className="p-4 border-t border-border mt-auto">
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-muted-foreground">© 2024 Home Depot</span>
+            <div className="flex gap-1">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8"
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              >
+                {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col">
-        <div className="border-b border-border bg-card p-6">
-          <div className="flex items-center gap-3">
-            <h2 className="text-xl font-semibold capitalize">{activeSection}</h2>
-            <Separator orientation="vertical" className="h-6" />
-            <span className="text-muted-foreground">{activeComponent}</span>
+      {/* Main Content Area */}
+      <div className="flex-1 flex flex-col bg-muted/20 overflow-hidden">
+        {/* Toolbar */}
+        <div className="h-14 border-b border-border bg-background flex items-center justify-between px-6 shrink-0">
+          <div className="flex items-center gap-4">
+            <h2 className="text-sm font-medium text-muted-foreground">
+              {activeSection} <span className="mx-2 text-border">/</span> <span className="text-foreground font-semibold">{activeComponent}</span>
+            </h2>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <div className="flex items-center bg-secondary/50 rounded-lg p-1 mr-4 border border-border">
+              <Button
+                variant="ghost"
+                size="sm"
+                className={`h-7 px-2 ${device === 'desktop' ? 'bg-background shadow-sm' : 'text-muted-foreground hover:bg-transparent'}`}
+                onClick={() => setDevice('desktop')}
+              >
+                <Laptop className="w-4 h-4 mr-1.5" />
+                <span className="text-xs">Desktop</span>
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                className={`h-7 px-2 ${device === 'tablet' ? 'bg-background shadow-sm' : 'text-muted-foreground hover:bg-transparent'}`}
+                onClick={() => setDevice('tablet')}
+              >
+                <Tablet className="w-4 h-4 mr-1.5" />
+                <span className="text-xs">Tablet</span>
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                className={`h-7 px-2 ${device === 'mobile' ? 'bg-background shadow-sm' : 'text-muted-foreground hover:bg-transparent'}`}
+                onClick={() => setDevice('mobile')}
+              >
+                <Smartphone className="w-4 h-4 mr-1.5" />
+                <span className="text-xs">Mobile</span>
+              </Button>
+            </div>
+
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 mr-2"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              title="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </Button>
+
+            <Button
+              variant="outline"
+              size="sm"
+              className={`gap-2 ${showCode ? 'bg-secondary' : ''}`}
+              onClick={() => setShowCode(!showCode)}
+            >
+              <Code className="w-4 h-4" />
+              Code
+            </Button>
           </div>
         </div>
 
+        {/* Content Canvas */}
         <ScrollArea className="flex-1">
-          <div className="p-8">
-            {children}
+          <div className="p-8 flex justify-center min-h-[calc(100vh-3.5rem)]">
+            <div className={`w-full transition-all duration-300 ease-in-out ${getDeviceWidth()}`}>
+              <div className="bg-background border border-border rounded-xl shadow-sm overflow-hidden min-h-[500px]">
+                {/* Mock Browser/Device Header for context */}
+                <div className="h-8 bg-muted border-b border-border flex items-center px-4 gap-2">
+                  <div className="flex gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-400/20 border border-red-500/30"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-amber-400/20 border border-amber-500/30"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-400/20 border border-green-500/30"></div>
+                  </div>
+                  <div className="flex-1 text-center">
+                    <div className="inline-block px-3 py-0.5 bg-background rounded text-[10px] text-muted-foreground font-medium border border-border shadow-sm">
+                      http://homedepot.ca/{activeSection}/{activeComponent.toLowerCase().replace(/\s+/g, '-')}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative">
+                  {showCode ? (
+                    <div className="p-6 bg-slate-950 text-slate-50 font-mono text-sm overflow-auto min-h-[400px]">
+                      <pre>
+                        {`// Example usage of ${activeComponent}
+
+import { ${activeComponent.replace(/\s+/g, '')} } from '@homedepot/components';
+
+export default function Example() {
+  return (
+    <${activeComponent.replace(/\s+/g, '')} 
+       variant="primary"
+       size="lg"
+       className="w-full"
+    />
+  );
+}`}
+                      </pre>
+                    </div>
+                  ) : (
+                    <div className="p-8">
+                      {children}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
         </ScrollArea>
       </div>
