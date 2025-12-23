@@ -97,7 +97,7 @@ export function Iconography() {
                             <span className="text-sm text-muted-foreground hidden sm:block">{set.description}</span>
                         </div>
 
-                        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-6">
+                        <div className="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-6">
                             {set.icons.map((item) => (
                                 <div
                                     key={item.name}
