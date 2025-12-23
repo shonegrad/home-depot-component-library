@@ -68,22 +68,22 @@ export function FormsComponents({ activeComponent }: { activeComponent: string }
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <Label htmlFor="default">Default State</Label>
-              <Input id="default" placeholder="Enter your email" />
+              <Input id="default" placeholder="Enter your email" className="h-10" />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="focused">Focused State</Label>
-              <Input id="focused" placeholder="Enter your email" className="ring-2 ring-primary ring-offset-2" />
+              <Input id="focused" placeholder="Enter your email" className="h-10 ring-2 ring-primary ring-offset-2" />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="filled">Filled State</Label>
-              <Input id="filled" defaultValue="john.doe@email.com" />
+              <Input id="filled" defaultValue="john.doe@email.com" className="h-10" />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="error">Error State</Label>
-              <Input id="error" placeholder="Enter your email" className="border-destructive" />
+              <Input id="error" placeholder="Enter your email" className="h-10 border-destructive focus-visible:ring-destructive" />
               <p className="text-sm text-destructive flex items-center gap-2">
                 <AlertCircle className="w-4 h-4" />
                 Please enter a valid email address

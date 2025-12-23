@@ -410,7 +410,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                                 <Button
                                   variant="ghost"
                                   size="icon"
-                                  className="bg-card/90 hover:bg-card shadow-sm"
+                                  className="bg-card/90 hover:bg-card shadow-sm hover:text-primary transition-colors"
                                   onClick={() => toggleWishlist(product.id)}
                                 >
                                   <Heart className={`w-4 h-4 ${wishlistedProducts.includes(product.id) ? 'fill-red-500 text-red-500' : ''}`} />
@@ -428,6 +428,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                                 <Button
                                   className="bg-card text-black hover:bg-card/90"
                                   onClick={() => addToCart(product.id)}
+                                  variant="secondary"
                                 >
                                   <ShoppingCart className="w-4 h-4 mr-2" />
                                   Quick Add
@@ -469,8 +470,8 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="left-2 hover:bg-primary hover:text-white" />
-              <CarouselNext className="right-2 hover:bg-primary hover:text-white" />
+              <CarouselPrevious className="left-2 hover:bg-primary hover:text-primary-foreground border-none bg-background/80" />
+              <CarouselNext className="right-2 hover:bg-primary hover:text-primary-foreground border-none bg-background/80" />
             </Carousel>
           </div>
         </div>

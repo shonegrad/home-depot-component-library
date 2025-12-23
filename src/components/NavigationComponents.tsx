@@ -59,8 +59,8 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
         <div>
           <h3 className="text-lg font-semibold mb-4">Global Header - Desktop</h3>
           <div className="border border-border rounded-lg p-4 bg-card shadow-sm">
-            <header className="flex items-center justify-between py-4 px-6">
-              <div className="flex items-center gap-8">
+            <header className="flex items-center justify-between py-3 px-6">
+              <div className="flex items-center gap-6">
                 <motion.div
                   className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center cursor-pointer"
                   whileHover={{ scale: 1.05 }}
@@ -96,7 +96,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                   <Input
                     placeholder="What can we help you find today?"
-                    className="pl-10 pr-24 py-3 text-base focus:ring-2 focus:ring-primary/20 transition-all"
+                    className="pl-10 pr-24 h-10 text-sm focus:ring-2 focus:ring-primary/20 transition-all bg-muted/20 border-muted-foreground/20 hover:border-primary/50"
                     value={searchValue}
                     onChange={(e) => {
                       setSearchValue(e.target.value);
