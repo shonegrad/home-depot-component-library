@@ -347,7 +347,7 @@ export default function Example() {
                   </ScrollArea>
                 ) : (
                   <div className="absolute inset-0 overflow-y-auto custom-scrollbar">
-                    <div className="h-full w-full p-6 md:p-8">
+                    <div className="min-h-full w-full p-6 md:p-8">
                       {children}
                     </div>
                   </div>
