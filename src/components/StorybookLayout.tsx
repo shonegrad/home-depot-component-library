@@ -323,7 +323,7 @@ export function StorybookLayout({
           >
 
 
-            <div className="flex-1 relative min-h-0" ref={containerRef}>
+            <div className="flex-1 relative min-h-0 bg-background" ref={containerRef}>
               <DevicePortalProvider value={{ container }}>
                 {showCode ? (
                   <ScrollArea className="h-full">
@@ -346,8 +346,8 @@ export default function Example() {
                     </div>
                   </ScrollArea>
                 ) : (
-                  <div className="h-full overflow-y-auto custom-scrollbar">
-                    <div className="p-8">
+                  <div className="absolute inset-0 overflow-y-auto custom-scrollbar">
+                    <div className="h-full w-full">
                       {children}
                     </div>
                   </div>
