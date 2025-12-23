@@ -11,31 +11,31 @@ import { AspectRatio } from './ui/aspect-ratio';
 import { toast } from 'sonner@2.0.3';
 import { motion } from 'motion/react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import { 
-  Star, 
-  Heart, 
-  ShoppingCart, 
-  Eye, 
-  Plus, 
-  Minus,
+import {
+  Star,
+  Favorite as Heart,
+  ShoppingCart,
+  Visibility as Eye,
+  Add as Plus,
+  Remove as Minus,
   ZoomIn,
   Share,
-  Truck,
-  MapPin,
-  Calendar,
+  LocalShipping as Truck,
+  LocationOn as MapPin,
+  CalendarToday as Calendar,
   ChevronLeft,
   ChevronRight,
-  BarChart3,
+  BarChart as BarChart3,
   Check,
-  X,
-  Clock,
-  Shield,
-  Award,
-  ThumbsUp,
+  Close as X,
+  AccessTime as Clock,
+  Security as Shield,
+  EmojiEvents as Award,
+  ThumbUp as ThumbsUp,
   Timer,
   Percent,
-  Bell
-} from 'lucide-react';
+  Notifications as Bell
+} from '@mui/icons-material';
 
 export function ProductComponents({ activeComponent }: { activeComponent: string }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -48,14 +48,14 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
 
   // Helper functions
   const toggleWishlist = (productId: number) => {
-    setWishlistedProducts(prev => 
-      prev.includes(productId) 
+    setWishlistedProducts(prev =>
+      prev.includes(productId)
         ? prev.filter(id => id !== productId)
         : [...prev, productId]
     );
     toast.success(
-      wishlistedProducts.includes(productId) 
-        ? 'Removed from wishlist' 
+      wishlistedProducts.includes(productId)
+        ? 'Removed from wishlist'
         : 'Added to wishlist'
     );
   };
@@ -85,12 +85,12 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
   ];
 
   const relatedProducts = [
-    { 
-      id: 1, 
-      name: 'DeWalt 20V MAX Cordless Drill/Driver Kit', 
-      price: 199.99, 
-      originalPrice: 229.99, 
-      rating: 4.5, 
+    {
+      id: 1,
+      name: 'DeWalt 20V MAX Cordless Drill/Driver Kit',
+      price: 199.99,
+      originalPrice: 229.99,
+      rating: 4.5,
       reviewCount: 247,
       image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=200&h=200&fit=crop',
       badge: 'Best Seller',
@@ -98,12 +98,12 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
       inStock: true,
       quickShip: true
     },
-    { 
-      id: 2, 
-      name: 'Milwaukee M18 FUEL Impact Driver', 
-      price: 179.99, 
+    {
+      id: 2,
+      name: 'Milwaukee M18 FUEL Impact Driver',
+      price: 179.99,
       originalPrice: 259.99,
-      rating: 4.8, 
+      rating: 4.8,
       reviewCount: 163,
       image: 'https://images.unsplash.com/photo-1609205797038-7ed45f8074bf?w=200&h=200&fit=crop',
       badge: '30% OFF',
@@ -111,21 +111,21 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
       inStock: true,
       quickShip: false
     },
-    { 
-      id: 3, 
-      name: 'Ryobi 18V ONE+ Circular Saw', 
-      price: 129.99, 
-      rating: 4.2, 
+    {
+      id: 3,
+      name: 'Ryobi 18V ONE+ Circular Saw',
+      price: 129.99,
+      rating: 4.2,
       reviewCount: 89,
       image: 'https://images.unsplash.com/photo-1622650316687-e5c8e8c0b02e?w=200&h=200&fit=crop',
       inStock: false,
       quickShip: false
     },
-    { 
-      id: 4, 
-      name: 'Makita 18V Angle Grinder', 
-      price: 159.99, 
-      rating: 4.6, 
+    {
+      id: 4,
+      name: 'Makita 18V Angle Grinder',
+      price: 159.99,
+      rating: 4.6,
       reviewCount: 124,
       image: 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09b8?w=200&h=200&fit=crop',
       badge: 'New',
@@ -133,12 +133,12 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
       inStock: true,
       quickShip: true
     },
-    { 
-      id: 5, 
-      name: 'BLACK+DECKER 20V Drill', 
-      price: 89.99, 
+    {
+      id: 5,
+      name: 'BLACK+DECKER 20V Drill',
+      price: 89.99,
       originalPrice: 109.99,
-      rating: 4.0, 
+      rating: 4.0,
       reviewCount: 205,
       image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=200&h=200&fit=crop',
       badge: 'Pro Choice',
@@ -146,11 +146,11 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
       inStock: true,
       quickShip: true
     },
-    { 
-      id: 6, 
-      name: 'Bosch 12V Compact Drill', 
-      price: 149.99, 
-      rating: 4.3, 
+    {
+      id: 6,
+      name: 'Bosch 12V Compact Drill',
+      price: 149.99,
+      rating: 4.3,
       reviewCount: 87,
       image: 'https://images.unsplash.com/photo-1609205797038-7ed45f8074bf?w=200&h=200&fit=crop',
       inStock: true,
@@ -173,19 +173,19 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                 <Card className={`group hover:shadow-xl transition-all duration-300 ${!product.inStock ? 'opacity-75' : ''} ${product.badge === '30% OFF' ? 'border-red-200' : ''}`}>
                   <CardHeader className="p-0">
                     <div className="relative aspect-square overflow-hidden rounded-t-lg">
-                      <ImageWithFallback 
+                      <ImageWithFallback
                         src={product.image}
                         alt={product.name}
                         className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 ${!product.inStock ? 'grayscale' : ''}`}
                       />
-                      
+
                       {/* Badges */}
                       {product.badge && (
                         <Badge className={`absolute top-3 left-3 ${product.badgeColor} text-white`}>
                           {product.badge}
                         </Badge>
                       )}
-                      
+
                       {product.quickShip && product.inStock && (
                         <Badge className="absolute top-3 right-12 bg-green-600 text-white text-xs">
                           <Truck className="w-3 h-3 mr-1" />
@@ -196,8 +196,8 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                       {/* Action Buttons */}
                       <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                         <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                          <Button 
-                            variant="ghost" 
+                          <Button
+                            variant="ghost"
                             size="icon"
                             className="bg-white/90 hover:bg-white shadow-sm"
                             onClick={() => toggleWishlist(product.id)}
@@ -205,10 +205,10 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                             <Heart className={`w-4 h-4 ${wishlistedProducts.includes(product.id) ? 'fill-red-500 text-red-500' : ''}`} />
                           </Button>
                         </motion.div>
-                        
+
                         <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                          <Button 
-                            variant="ghost" 
+                          <Button
+                            variant="ghost"
                             size="icon"
                             className="bg-white/90 hover:bg-white shadow-sm"
                             onClick={() => toggleCompare(product.id)}
@@ -220,8 +220,8 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                         <Dialog>
                           <DialogTrigger asChild>
                             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                              <Button 
-                                variant="ghost" 
+                              <Button
+                                variant="ghost"
                                 size="icon"
                                 className="bg-white/90 hover:bg-white shadow-sm"
                               >
@@ -236,7 +236,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                             </DialogHeader>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                               <AspectRatio ratio={1} className="bg-muted rounded-lg overflow-hidden">
-                                <ImageWithFallback 
+                                <ImageWithFallback
                                   src={product.image}
                                   alt={product.name}
                                   className="w-full h-full object-cover"
@@ -247,9 +247,9 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                                   <h4 className="font-semibold">{product.name}</h4>
                                   <div className="flex items-center gap-1 mt-2">
                                     {[...Array(5)].map((_, i) => (
-                                      <Star 
-                                        key={i} 
-                                        className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} 
+                                      <Star
+                                        key={i}
+                                        className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
                                       />
                                     ))}
                                     <span className="text-sm text-muted-foreground ml-1">({product.reviewCount})</span>
@@ -281,23 +281,23 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                       )}
                     </div>
                   </CardHeader>
-                  
+
                   <CardContent className="p-4">
                     <div className="space-y-3">
                       <h4 className="font-medium line-clamp-2 group-hover:text-primary transition-colors">
                         {product.name}
                       </h4>
-                      
+
                       <div className="flex items-center gap-1">
                         {[...Array(5)].map((_, i) => (
-                          <Star 
-                            key={i} 
-                            className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} 
+                          <Star
+                            key={i}
+                            className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
                           />
                         ))}
                         <span className="text-sm text-muted-foreground ml-1">({product.reviewCount})</span>
                       </div>
-                      
+
                       <div className="flex items-center gap-2">
                         <span className="text-lg font-bold text-primary">${product.price}</span>
                         {product.originalPrice && (
@@ -313,7 +313,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                       {product.inStock ? (
                         <div className="flex gap-2">
                           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="flex-1">
-                            <Button 
+                            <Button
                               className="w-full bg-primary hover:bg-primary/90 transition-all"
                               onClick={() => addToCart(product.id)}
                             >
@@ -354,7 +354,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
 
         {/* Comparison Bar */}
         {compareProducts.length > 0 && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-white border border-border rounded-lg shadow-lg p-4 z-50"
@@ -393,12 +393,12 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                       <Card className="group hover:shadow-xl transition-all duration-300 h-full">
                         <CardHeader className="p-0">
                           <div className="relative aspect-square overflow-hidden rounded-t-lg">
-                            <ImageWithFallback 
+                            <ImageWithFallback
                               src={product.image}
                               alt={product.name}
                               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                             />
-                            
+
                             {product.badge && (
                               <Badge className={`absolute top-3 left-3 ${product.badgeColor} text-white`}>
                                 {product.badge}
@@ -407,8 +407,8 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
 
                             <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
                               <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                                <Button 
-                                  variant="ghost" 
+                                <Button
+                                  variant="ghost"
                                   size="icon"
                                   className="bg-white/90 hover:bg-white shadow-sm"
                                   onClick={() => toggleWishlist(product.id)}
@@ -420,12 +420,12 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
 
                             {/* Quick Add Overlay */}
                             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                              <motion.div 
+                              <motion.div
                                 initial={{ scale: 0.8, opacity: 0 }}
                                 whileHover={{ scale: 1, opacity: 1 }}
                                 transition={{ duration: 0.2 }}
                               >
-                                <Button 
+                                <Button
                                   className="bg-white text-black hover:bg-white/90"
                                   onClick={() => addToCart(product.id)}
                                 >
@@ -443,9 +443,9 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                             </h4>
                             <div className="flex items-center gap-1">
                               {[...Array(5)].map((_, i) => (
-                                <Star 
-                                  key={i} 
-                                  className={`w-3 h-3 ${i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} 
+                                <Star
+                                  key={i}
+                                  className={`w-3 h-3 ${i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
                                 />
                               ))}
                               <span className="text-xs text-muted-foreground ml-1">({product.reviewCount})</span>
@@ -511,7 +511,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                 </div>
                 <div className="relative">
                   <AspectRatio ratio={1} className="bg-white rounded-lg overflow-hidden">
-                    <ImageWithFallback 
+                    <ImageWithFallback
                       src="https://images.unsplash.com/photo-1609205797038-7ed45f8074bf?w=400&h=400&fit=crop"
                       alt="Milwaukee Impact Driver"
                       className="w-full h-full object-cover"
@@ -537,15 +537,15 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
           </div>
           <div className="flex gap-4 overflow-x-auto pb-2">
             {relatedProducts.slice(0, 4).map((product, index) => (
-              <motion.div 
-                key={product.id} 
+              <motion.div
+                key={product.id}
                 className="flex-shrink-0 w-48"
                 whileHover={{ scale: 1.02 }}
               >
                 <Card className="group hover:shadow-lg transition-all">
                   <CardHeader className="p-0">
                     <div className="relative aspect-square overflow-hidden rounded-t-lg">
-                      <ImageWithFallback 
+                      <ImageWithFallback
                         src={product.image}
                         alt={product.name}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform"
@@ -559,9 +559,9 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                     <h4 className="font-medium text-sm line-clamp-2 mb-2">{product.name}</h4>
                     <div className="flex items-center gap-1 mb-2">
                       {[...Array(5)].map((_, i) => (
-                        <Star 
-                          key={i} 
-                          className={`w-3 h-3 ${i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} 
+                        <Star
+                          key={i}
+                          className={`w-3 h-3 ${i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
                         />
                       ))}
                     </div>
@@ -580,35 +580,34 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
     return (
       <div className="space-y-8">
         <h3 className="text-lg font-semibold">Product Detail Page</h3>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Image Gallery */}
           <div className="space-y-4">
             <div className="relative aspect-square overflow-hidden rounded-lg border">
-              <ImageWithFallback 
+              <ImageWithFallback
                 src={productImages[currentImageIndex]}
                 alt="Product main image"
                 className="w-full h-full object-cover"
               />
-              <Button 
-                variant="ghost" 
+              <Button
+                variant="ghost"
                 size="icon"
                 className="absolute top-4 right-4 bg-white/80 hover:bg-white"
               >
                 <ZoomIn className="w-4 h-4" />
               </Button>
             </div>
-            
+
             <div className="flex gap-2">
               {productImages.map((image, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
-                  className={`relative w-20 h-20 rounded-md overflow-hidden border-2 ${
-                    currentImageIndex === index ? 'border-primary' : 'border-transparent'
-                  }`}
+                  className={`relative w-20 h-20 rounded-md overflow-hidden border-2 ${currentImageIndex === index ? 'border-primary' : 'border-transparent'
+                    }`}
                 >
-                  <ImageWithFallback 
+                  <ImageWithFallback
                     src={image}
                     alt={`Product view ${index + 1}`}
                     className="w-full h-full object-cover"
@@ -632,9 +631,9 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1">
                 {[...Array(5)].map((_, i) => (
-                  <Star 
-                    key={i} 
-                    className={`w-5 h-5 ${i < 4 ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} 
+                  <Star
+                    key={i}
+                    className={`w-5 h-5 ${i < 4 ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
                   />
                 ))}
               </div>
@@ -663,8 +662,8 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
               <div className="flex items-center gap-4">
                 <label className="font-medium">Quantity:</label>
                 <div className="flex items-center border border-border rounded-md">
-                  <Button 
-                    variant="ghost" 
+                  <Button
+                    variant="ghost"
                     size="icon"
                     className="h-10 w-10 rounded-none"
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -675,8 +674,8 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                   <div className="w-16 h-10 flex items-center justify-center font-medium">
                     {quantity}
                   </div>
-                  <Button 
-                    variant="ghost" 
+                  <Button
+                    variant="ghost"
                     size="icon"
                     className="h-10 w-10 rounded-none"
                     onClick={() => setQuantity(quantity + 1)}
@@ -728,7 +727,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                   <AccordionTrigger>Product Overview</AccordionTrigger>
                   <AccordionContent>
                     <p className="text-muted-foreground">
-                      The DeWalt 20V MAX Cordless Drill/Driver Kit offers versatility and convenience for drilling and fastening applications. 
+                      The DeWalt 20V MAX Cordless Drill/Driver Kit offers versatility and convenience for drilling and fastening applications.
                       Features a high-performance motor that delivers 300 unit watts out (UWO) of power, completing a wide range of applications.
                     </p>
                   </AccordionContent>
@@ -767,15 +766,15 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                     <div className="text-4xl font-bold">4.5</div>
                     <div className="flex items-center gap-1 mt-1">
                       {[...Array(5)].map((_, i) => (
-                        <Star 
-                          key={i} 
-                          className={`w-4 h-4 ${i < 4 ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} 
+                        <Star
+                          key={i}
+                          className={`w-4 h-4 ${i < 4 ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
                         />
                       ))}
                     </div>
                     <div className="text-sm text-muted-foreground mt-1">247 reviews</div>
                   </div>
-                  
+
                   <div className="flex-1 space-y-2">
                     {[5, 4, 3, 2, 1].map((rating) => (
                       <div key={rating} className="flex items-center gap-2">
@@ -788,7 +787,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                     ))}
                   </div>
                 </div>
-                
+
                 <Button className="w-full" variant="outline">
                   Write a Review
                 </Button>
@@ -810,7 +809,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
               <Card key={product.id} className="group hover:shadow-md transition-shadow">
                 <CardHeader className="p-0">
                   <div className="relative aspect-square overflow-hidden rounded-t-lg">
-                    <ImageWithFallback 
+                    <ImageWithFallback
                       src={product.image}
                       alt={product.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
@@ -821,9 +820,9 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                   <h4 className="font-medium text-sm line-clamp-2 mb-1">{product.name}</h4>
                   <div className="flex items-center gap-1 mb-2">
                     {[...Array(5)].map((_, i) => (
-                      <Star 
-                        key={i} 
-                        className={`w-3 h-3 ${i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} 
+                      <Star
+                        key={i}
+                        className={`w-3 h-3 ${i < Math.floor(product.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
                       />
                     ))}
                   </div>
@@ -842,7 +841,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
                 <Card className="group hover:shadow-md transition-shadow">
                   <CardHeader className="p-0">
                     <div className="relative aspect-square overflow-hidden rounded-t-lg">
-                      <ImageWithFallback 
+                      <ImageWithFallback
                         src={product.image}
                         alt={product.name}
                         className="w-full h-full object-cover"
@@ -876,7 +875,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
             </Button>
           </div>
           <div className="absolute top-0 right-0 w-64 h-64 opacity-20">
-            <ImageWithFallback 
+            <ImageWithFallback
               src="https://images.unsplash.com/photo-1504148455328-c376907d081c?w=400&h=400&fit=crop"
               alt="Power tools"
               className="w-full h-full object-cover"
@@ -895,7 +894,7 @@ export function ProductComponents({ activeComponent }: { activeComponent: string
               </Button>
             </div>
           </div>
-          
+
           <div className="relative overflow-hidden rounded-lg bg-blue-50 p-6">
             <div className="relative z-10">
               <h3 className="text-xl font-semibold mb-2">Pro Services</h3>

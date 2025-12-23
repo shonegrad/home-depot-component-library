@@ -6,6 +6,8 @@ import { ProductComponents } from './components/ProductComponents';
 import { CheckoutComponents } from './components/CheckoutComponents';
 import { ArticlesComponents } from './components/ArticlesComponents';
 import { UtilitiesComponents } from './components/UtilitiesComponents';
+import { ProductListingPage } from './components/context/ProductListingPage';
+import { CheckoutPage } from './components/context/CheckoutPage';
 import { Toaster } from './components/ui/sonner';
 
 export default function App() {
@@ -26,6 +28,10 @@ export default function App() {
         return <ArticlesComponents activeComponent={activeComponent} />;
       case 'utilities':
         return <UtilitiesComponents activeComponent={activeComponent} />;
+      case 'context':
+        if (activeComponent === 'Product Listing Page') return <ProductListingPage />;
+        if (activeComponent === 'Checkout Page') return <CheckoutPage />;
+        return <div className="p-4">Select a context example</div>;
       default:
         return <NavigationComponents activeComponent={activeComponent} />;
     }
@@ -40,7 +46,8 @@ export default function App() {
       product: 'Product Tile',
       checkout: 'Cart List',
       articles: 'Article List',
-      utilities: 'Modals'
+      utilities: 'Modals',
+      context: 'Product Listing Page'
     };
     setActiveComponent(defaultComponents[section] || '');
   };
