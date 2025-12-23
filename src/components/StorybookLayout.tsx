@@ -181,7 +181,7 @@ export function StorybookLayout({
                       onSectionChange(section.id);
                     }}
                   >
-                    <div className="flex items-center gap-2.5">
+                    <div className="flex items-center gap-4">
                       <Icon className="w-4 h-4" />
                       <span>{section.title}</span>
                     </div>

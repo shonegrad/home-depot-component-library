@@ -66,7 +66,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Home className="w-6 h-6 text-white" />
+                  <Home className="w-6 h-6 text-primary-foreground" />
                 </motion.div>
                 <nav className="hidden md:flex items-center gap-6">
                   <DropdownMenu>
@@ -251,7 +251,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
                   <div className="py-4">
                     <div className="flex items-center gap-3 mb-6">
                       <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                        <Home className="w-4 h-4 text-white" />
+                        <Home className="w-4 h-4 text-primary-foreground" />
                       </div>
                       <span className="font-semibold">Home Depot</span>
                     </div>
@@ -268,7 +268,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
               </Sheet>
 
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <Home className="w-4 h-4 text-white" />
+                <Home className="w-4 h-4 text-primary-foreground" />
               </div>
 
               <Button variant="ghost" size="icon" className="relative">
@@ -303,7 +303,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
                 <SheetContent side="left" className="w-80 p-0">
                   <div className="flex flex-col h-full">
                     {/* Header */}
-                    <div className="p-6 bg-primary text-white">
+                    <div className="p-6 bg-primary text-primary-foreground">
                       <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 bg-card rounded-lg flex items-center justify-center">
@@ -403,7 +403,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
               </Sheet>
 
               <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <Home className="w-5 h-5 text-white" />
+                <Home className="w-5 h-5 text-primary-foreground" />
               </div>
 
               <Button variant="ghost" size="icon" className="relative hover:bg-primary/10">
@@ -561,7 +561,7 @@ export function NavigationComponents({ activeComponent }: { activeComponent: str
                       <Filter className="w-4 h-4" />
                       Filter
                       {selectedFilters.length > 0 && (
-                        <Badge className="ml-1 bg-primary text-white">
+                        <Badge className="ml-1 bg-primary text-primary-foreground">
                           {selectedFilters.length}
                         </Badge>
                       )}
